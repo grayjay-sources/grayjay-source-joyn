@@ -1,0 +1,80 @@
+// Joyn Plugin for GrayJay
+// Author: Bluscream, Cursor.AI
+// Platform: https://joyn.de
+
+const PLATFORM = "Joyn";
+const BASE_URL = "https://www.joyn.de";
+const CONTENT_TYPE = "series";
+
+var config = {};
+
+// Source Methods
+source.enable = function(conf) {
+    config = conf ?? {};
+    log("Joyn plugin enabled");
+};
+
+source.getHome = function() {
+    log("Getting home page");
+    throw new ScriptException("Not implemented yet");
+};
+
+source.searchSuggestions = function(query) {
+    return [];
+};
+
+source.getSearchCapabilities = function() {
+    return {
+        types: [Type.Feed.Mixed],
+        sorts: [Type.Order.Chronological],
+        filters: []
+    };
+};
+
+source.search = function(query, type, order, filters) {
+    log("Searching for: " + query);
+    throw new ScriptException("Not implemented yet");
+};
+
+source.getChannelCapabilities = function() {
+    return {
+        types: [Type.Feed.Mixed],
+        sorts: [Type.Order.Chronological],
+        filters: []
+    };
+};
+
+source.isChannelUrl = function(url) {
+    return url.includes("joyn.de/serien/") || url.includes("joyn.de/filme/");
+};
+
+source.getChannel = function(url) {
+    log("Getting channel: " + url);
+    throw new ScriptException("Not implemented yet");
+};
+
+source.getChannelContents = function(url, type, order, filters) {
+    log("Getting channel contents: " + url);
+    throw new ScriptException("Not implemented yet");
+};
+
+source.isContentDetailsUrl = function(url) {
+    return url.includes("joyn.de/");
+};
+
+source.getContentDetails = function(url) {
+    log("Getting content details: " + url);
+    throw new ScriptException("Not implemented yet");
+};
+
+source.saveState = function() {
+    return JSON.stringify(config);
+};
+
+// Helper Functions
+function log(message) {
+    console.log("[Joyn] " + message);
+}
+
+log("Joyn script loaded");
+
