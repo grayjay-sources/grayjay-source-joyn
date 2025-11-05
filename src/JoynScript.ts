@@ -16,9 +16,10 @@ import {
   ALGOLIA_APP_ID,
   SEARCH_CAPABILITIES,
   PLATFORM,
-  REGEX_VIDEO_URL,
+  REGEX_EPISODE_URL,
   REGEX_SERIES_URL,
   REGEX_MOVIE_URL,
+  REGEX_LIVE_TV_URL,
   REGEX_CHANNEL_URL
 } from './constants';
 
@@ -247,19 +248,39 @@ function searchCallback(opts: any) {
 }
 
 source.isChannelUrl = function (url) {
-  return REGEX_CHANNEL_URL.test(url);
+  // Channels are brand/mediathek pages and live TV channels
+  return REGEX_CHANNEL_URL.test(url) || REGEX_LIVE_TV_URL.test(url);
 };
 
 source.isContentDetailsUrl = function (url) {
-  return REGEX_VIDEO_URL.test(url) || 
-         REGEX_SERIES_URL.test(url) || 
-         REGEX_MOVIE_URL.test(url);
+  // Content details are episodes and movies (NOT series, which are playlists)
+  return REGEX_EPISODE_URL.test(url) || REGEX_MOVIE_URL.test(url);
+};
+
+source.isPlaylistUrl = function (url) {
+  // Series and seasons are playlists
+  return REGEX_SERIES_URL.test(url);
 };
 
 source.getChannel = function (url) {
   log('getChannel called: ' + url);
   
-  throw new ScriptException('Not implemented yet');
+  try {
+    // Handle live TV channels
+    if (REGEX_LIVE_TV_URL.test(url)) {
+      return getLiveTVChannel(url);
+    }
+    
+    // Handle brand/mediathek channels
+    if (REGEX_CHANNEL_URL.test(url)) {
+      return getBrandChannel(url);
+    }
+    
+    throw new ScriptException('Unknown channel URL format: ' + url);
+  } catch (e) {
+    log('Error in getChannel: ' + e);
+    throw e;
+  }
 };
 
 source.getChannelContents = function (url, type, order, filters) {
@@ -280,16 +301,32 @@ source.getContentDetails = function (url) {
     
     log('Asset ID: ' + assetId);
     
-    // For series, we need to get the series details and list episodes
-    if (url.includes('/serien/')) {
-      return getSeriesDetails(url, assetId);
-    } else if (url.includes('/filme/')) {
+    // For episodes, get episode details
+    if (REGEX_EPISODE_URL.test(url)) {
+      return getEpisodeDetails(url, assetId);
+    } else if (REGEX_MOVIE_URL.test(url)) {
       return getMovieDetails(url, assetId);
     } else {
       throw new ScriptException('Unknown content type for URL: ' + url);
     }
   } catch (e) {
     log('Error in getContentDetails: ' + e);
+    throw e;
+  }
+};
+
+source.getPlaylist = function (url) {
+  log('getPlaylist called: ' + url);
+  
+  try {
+    // Series are playlists containing seasons and episodes
+    if (REGEX_SERIES_URL.test(url)) {
+      return getSeriesPlaylist(url);
+    }
+    
+    throw new ScriptException('Unknown playlist URL format: ' + url);
+  } catch (e) {
+    log('Error in getPlaylist: ' + e);
     throw e;
   }
 };
@@ -436,20 +473,68 @@ function executeGqlQuery(requestOptions: {
   }
 }
 
+// Helper Functions for Channels
+
+function getLiveTVChannel(url: string): PlatformChannel {
+  log('getLiveTVChannel for: ' + url);
+  
+  // Extract channel_id from URL if present
+  const channelIdMatch = url.match(/channel_id=([0-9]+)/);
+  const channelId = channelIdMatch ? channelIdMatch[1] : '';
+  
+  // Query live lane to get live channels
+  const [error, data] = executeGqlQuery({
+    ...LIVE_LANE_QUERY,
+    variables: {
+      blockId: '266996:d50d6f558ab31ad3169c8afa1930f7b3'
+    }
+  });
+  
+  if (error) {
+    throw new ScriptException('Failed to get live channels: ' + error.status);
+  }
+  
+  // TODO: Parse live channel data and find the requested channel
+  throw new ScriptException('Live TV channel parsing not yet implemented');
+}
+
+function getBrandChannel(url: string): PlatformChannel {
+  log('getBrandChannel for: ' + url);
+  
+  // TODO: Query for brand/mediathek details
+  throw new ScriptException('Brand channel not yet implemented');
+}
+
 // Helper Functions for Content Details
 
-function getSeriesDetails(url: string, assetId: string): PlatformVideoDetails {
-  log('getSeriesDetails for: ' + assetId);
+function getEpisodeDetails(url: string, assetId: string): PlatformVideoDetails {
+  log('getEpisodeDetails for: ' + assetId);
   
-  // For now, return a basic stub
-  // We need to scrape the page or find the right GraphQL query
-  throw new ScriptException('Series details not yet implemented');
+  // TODO: Query for episode metadata and video sources
+  throw new ScriptException('Episode details not yet implemented');
 }
 
 function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
   log('getMovieDetails for: ' + assetId);
   
+  // TODO: Query for movie metadata and video sources
   throw new ScriptException('Movie details not yet implemented');
+}
+
+// Helper Functions for Playlists
+
+function getSeriesPlaylist(url: string): PlatformPlaylistDetails {
+  log('getSeriesPlaylist for: ' + url);
+  
+  const seriesSlug = getSeriesSlugFromUrl(url);
+  if (!seriesSlug) {
+    throw new ScriptException('Could not extract series slug from URL: ' + url);
+  }
+  
+  // TODO: Query for series metadata
+  // TODO: Query for all seasons using SEASON_QUERY
+  // TODO: Build playlist with all episodes
+  throw new ScriptException('Series playlist not yet implemented');
 }
 
 log('Joyn plugin loaded');

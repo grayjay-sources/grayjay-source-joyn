@@ -8,10 +8,11 @@ const ALGOLIA_APP_ID = 'FFQRV35SVV';
 const PLATFORM = 'Joyn';
 const USER_AGENT = 'Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.230 Mobile Safari/537.36';
 // URL Patterns
-const REGEX_VIDEO_URL = /^https:\/\/(?:www\.)?joyn\.de\/(serien|filme)\/[a-zA-Z0-9-]+$/i;
-const REGEX_SERIES_URL = /^https:\/\/(?:www\.)?joyn\.de\/serien\/[a-zA-Z0-9-]+$/i;
+const REGEX_EPISODE_URL = /^https:\/\/(?:www\.)?joyn\.de\/serien\/[a-zA-Z0-9-]+\/[0-9]+-[0-9]+-[a-zA-Z0-9-]+$/i;
 const REGEX_MOVIE_URL = /^https:\/\/(?:www\.)?joyn\.de\/filme\/[a-zA-Z0-9-]+$/i;
-const REGEX_CHANNEL_URL = /^https:\/\/(?:www\.)?joyn\.de\/play\/live-tv\/[a-zA-Z0-9-]+$/i;
+const REGEX_SERIES_URL = /^https:\/\/(?:www\.)?joyn\.de\/serien\/[a-zA-Z0-9-]+$/i;
+const REGEX_LIVE_TV_URL = /^https:\/\/(?:www\.)?joyn\.de\/play\/live-tv(\?channel_id=[0-9]+)?$/i;
+const REGEX_CHANNEL_URL = /^https:\/\/(?:www\.)?joyn\.de\/mediatheken\/[a-zA-Z0-9-]+$/i;
 const SEARCH_CAPABILITIES = {
     types: [Type.Feed.Mixed],
     sorts: ['Most Recent', 'Most Viewed'],
@@ -30,6 +31,13 @@ const LANDING_PAGE_QUERY = {
     persistedQuery: {
         version: 1,
         sha256Hash: '82586002cd18fa09ea491e5be192c10ed0b392b77d8a47f6e11b065172cfc894'
+    }
+};
+const LIVE_LANE_QUERY = {
+    operationName: 'LiveLane',
+    persistedQuery: {
+        version: 1,
+        sha256Hash: '51659c62d4e4a6628d1e512190a3b0659486478b12be494875bef5a83dcb79ed'
     }
 };
 const ALGOLIA_API_KEY_QUERY = {
@@ -61,6 +69,11 @@ function getAssetIdFromUrl(url) {
     }
     // Otherwise return the slug
     return lastSegment || null;
+}
+function getSeriesSlugFromUrl(url) {
+    // Extract series slug from URLs like /serien/navy-cis-la or /serien/navy-cis-la/14-1-...
+    const match = url.match(/\/serien\/([^\/\?]+)/);
+    return match ? match[1] : null;
 }
 function buildImageUrl(path, profile) {
     if (!path)
@@ -317,16 +330,34 @@ function searchCallback(opts) {
     return source.search(opts.query, opts.type, opts.order, opts.filters, { page: opts.page });
 }
 source.isChannelUrl = function (url) {
-    return REGEX_CHANNEL_URL.test(url);
+    // Channels are brand/mediathek pages and live TV channels
+    return REGEX_CHANNEL_URL.test(url) || REGEX_LIVE_TV_URL.test(url);
 };
 source.isContentDetailsUrl = function (url) {
-    return REGEX_VIDEO_URL.test(url) ||
-        REGEX_SERIES_URL.test(url) ||
-        REGEX_MOVIE_URL.test(url);
+    // Content details are episodes and movies (NOT series, which are playlists)
+    return REGEX_EPISODE_URL.test(url) || REGEX_MOVIE_URL.test(url);
+};
+source.isPlaylistUrl = function (url) {
+    // Series and seasons are playlists
+    return REGEX_SERIES_URL.test(url);
 };
 source.getChannel = function (url) {
     log('getChannel called: ' + url);
-    throw new ScriptException('Not implemented yet');
+    try {
+        // Handle live TV channels
+        if (REGEX_LIVE_TV_URL.test(url)) {
+            return getLiveTVChannel(url);
+        }
+        // Handle brand/mediathek channels
+        if (REGEX_CHANNEL_URL.test(url)) {
+            return getBrandChannel(url);
+        }
+        throw new ScriptException('Unknown channel URL format: ' + url);
+    }
+    catch (e) {
+        log('Error in getChannel: ' + e);
+        throw e;
+    }
 };
 source.getChannelContents = function (url, type, order, filters) {
     log('getChannelContents called: ' + url);
@@ -341,11 +372,11 @@ source.getContentDetails = function (url) {
             throw new ScriptException('Could not extract asset ID from URL: ' + url);
         }
         log('Asset ID: ' + assetId);
-        // For series, we need to get the series details and list episodes
-        if (url.includes('/serien/')) {
-            return getSeriesDetails(url, assetId);
+        // For episodes, get episode details
+        if (REGEX_EPISODE_URL.test(url)) {
+            return getEpisodeDetails(url, assetId);
         }
-        else if (url.includes('/filme/')) {
+        else if (REGEX_MOVIE_URL.test(url)) {
             return getMovieDetails(url, assetId);
         }
         else {
@@ -354,6 +385,20 @@ source.getContentDetails = function (url) {
     }
     catch (e) {
         log('Error in getContentDetails: ' + e);
+        throw e;
+    }
+};
+source.getPlaylist = function (url) {
+    log('getPlaylist called: ' + url);
+    try {
+        // Series are playlists containing seasons and episodes
+        if (REGEX_SERIES_URL.test(url)) {
+            return getSeriesPlaylist(url);
+        }
+        throw new ScriptException('Unknown playlist URL format: ' + url);
+    }
+    catch (e) {
+        log('Error in getPlaylist: ' + e);
         throw e;
     }
 };
@@ -472,15 +517,51 @@ function executeGqlQuery(requestOptions) {
             }, null];
     }
 }
+// Helper Functions for Channels
+function getLiveTVChannel(url) {
+    log('getLiveTVChannel for: ' + url);
+    // Extract channel_id from URL if present
+    const channelIdMatch = url.match(/channel_id=([0-9]+)/);
+    channelIdMatch ? channelIdMatch[1] : '';
+    // Query live lane to get live channels
+    const [error, data] = executeGqlQuery({
+        ...LIVE_LANE_QUERY,
+        variables: {
+            blockId: '266996:d50d6f558ab31ad3169c8afa1930f7b3'
+        }
+    });
+    if (error) {
+        throw new ScriptException('Failed to get live channels: ' + error.status);
+    }
+    // TODO: Parse live channel data and find the requested channel
+    throw new ScriptException('Live TV channel parsing not yet implemented');
+}
+function getBrandChannel(url) {
+    log('getBrandChannel for: ' + url);
+    // TODO: Query for brand/mediathek details
+    throw new ScriptException('Brand channel not yet implemented');
+}
 // Helper Functions for Content Details
-function getSeriesDetails(url, assetId) {
-    log('getSeriesDetails for: ' + assetId);
-    // For now, return a basic stub
-    // We need to scrape the page or find the right GraphQL query
-    throw new ScriptException('Series details not yet implemented');
+function getEpisodeDetails(url, assetId) {
+    log('getEpisodeDetails for: ' + assetId);
+    // TODO: Query for episode metadata and video sources
+    throw new ScriptException('Episode details not yet implemented');
 }
 function getMovieDetails(url, assetId) {
     log('getMovieDetails for: ' + assetId);
+    // TODO: Query for movie metadata and video sources
     throw new ScriptException('Movie details not yet implemented');
+}
+// Helper Functions for Playlists
+function getSeriesPlaylist(url) {
+    log('getSeriesPlaylist for: ' + url);
+    const seriesSlug = getSeriesSlugFromUrl(url);
+    if (!seriesSlug) {
+        throw new ScriptException('Could not extract series slug from URL: ' + url);
+    }
+    // TODO: Query for series metadata
+    // TODO: Query for all seasons using SEASON_QUERY
+    // TODO: Build playlist with all episodes
+    throw new ScriptException('Series playlist not yet implemented');
 }
 log('Joyn plugin loaded');
