@@ -64,4 +64,3 @@ export class JoynSearchPager extends VideoPager {
     return this.cb(opts);
   }
 }
-

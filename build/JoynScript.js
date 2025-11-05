@@ -3,6 +3,8 @@
 const BASE_URL = 'https://www.joyn.de';
 const BASE_URL_API = 'https://api.joyn.de/graphql';
 const BASE_URL_AUTH = 'https://auth.joyn.de/auth/anonymous';
+const BASE_URL_ALGOLIA = 'https://ffqrv35svv-dsn.algolia.net/1/indexes/*/queries';
+const ALGOLIA_APP_ID = 'FFQRV35SVV';
 const PLATFORM = 'Joyn';
 const USER_AGENT = 'Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.230 Mobile Safari/537.36';
 // URL Patterns
@@ -30,12 +32,35 @@ const LANDING_PAGE_QUERY = {
         sha256Hash: '82586002cd18fa09ea491e5be192c10ed0b392b77d8a47f6e11b065172cfc894'
     }
 };
+const ALGOLIA_API_KEY_QUERY = {
+    operationName: 'AlgoliaApiKey',
+    persistedQuery: {
+        version: 1,
+        sha256Hash: '21a962eb1b3f05c32b85cf8d015f1814563af3d4aede35d6e2f211838fdcfb61'
+    }
+};
 
 function applyCommonHeaders() {
     return { ...DEFAULT_HEADERS };
 }
 function log(message) {
     console.log(`[Joyn] ${message}`);
+}
+function getAssetIdFromUrl(url) {
+    // Extract last segment from URL (may contain the asset ID)
+    // Joyn URLs can be:
+    // - /serien/navy-cis-la (series slug)
+    // - /serien/navy-cis-la/14-1-game-of-drones-bpidjn4j8opy (episode with ID at end)
+    // - /filme/transformers-aufstieg-der-bestien (movie slug)
+    const parts = url.split('?')[0].split('/');
+    const lastSegment = parts[parts.length - 1];
+    // Check if last segment contains an asset ID (starts with b_, d_, c_)
+    const assetMatch = lastSegment.match(/([bdc]_[a-z0-9]+)$/i);
+    if (assetMatch) {
+        return assetMatch[1];
+    }
+    // Otherwise return the slug
+    return lastSegment || null;
 }
 function buildImageUrl(path, profile) {
     if (!path)
@@ -81,11 +106,54 @@ const JoynAssetToGrayjayVideo = (pluginId, asset) => {
     return new PlatformVideo(video);
 };
 
+class JoynVideoPager extends VideoPager {
+    cb;
+    constructor(results, hasMore, context, cb) {
+        super(results, hasMore, context);
+        this.cb = cb;
+    }
+    nextPage() {
+        this.context.page += 1;
+        return this.cb(this.context);
+    }
+}
+class JoynChannelPager extends ChannelPager {
+    cb;
+    constructor(results, hasMore, context, cb) {
+        super(results, hasMore, context);
+        this.cb = cb;
+    }
+    nextPage() {
+        this.context.page += 1;
+        return this.cb(this.context);
+    }
+}
+class JoynSearchPager extends VideoPager {
+    cb;
+    constructor(results, hasMore, params, page, cb) {
+        super(results, hasMore, { params, page });
+        this.cb = cb;
+    }
+    nextPage() {
+        this.context.page += 1;
+        const opts = {
+            query: this.context.params.query,
+            type: this.context.params.type,
+            order: this.context.params.order,
+            filters: this.context.params.filters,
+            page: this.context.page,
+        };
+        return this.cb(opts);
+    }
+}
+
 let config;
 const state = {
     authToken: '',
     authTokenExpiration: 0,
-    userId: ''
+    userId: '',
+    algoliaApiKey: '',
+    algoliaApiKeyExpiration: 0
 };
 //Source Methods
 source.enable = function (conf, settings, saveStateStr) {
@@ -98,6 +166,8 @@ source.enable = function (conf, settings, saveStateStr) {
             state.authToken = savedState.authToken || '';
             state.authTokenExpiration = savedState.authTokenExpiration || 0;
             state.userId = savedState.userId || '';
+            state.algoliaApiKey = savedState.algoliaApiKey || '';
+            state.algoliaApiKeyExpiration = savedState.algoliaApiKeyExpiration || 0;
         }
         catch (e) {
             log('Failed to parse saved state: ' + e);
@@ -115,7 +185,9 @@ source.saveState = function () {
     return JSON.stringify({
         authToken: state.authToken,
         authTokenExpiration: state.authTokenExpiration,
-        userId: state.userId
+        userId: state.userId,
+        algoliaApiKey: state.algoliaApiKey,
+        algoliaApiKeyExpiration: state.algoliaApiKeyExpiration
     });
 };
 source.getHome = function (continuationToken) {
@@ -183,9 +255,67 @@ source.getSearchCapabilities = function () {
 };
 source.search = function (query, type, order, filters, continuationToken) {
     log('search called: ' + query);
-    // TODO: Implement search using Joyn's GraphQL API
-    return new VideoPager([], false, {});
+    try {
+        // Get Algolia API key if needed
+        if (!isAlgoliaKeyValid()) {
+            refreshAlgoliaApiKey();
+        }
+        const page = continuationToken?.page || 0;
+        const hitsPerPage = 20;
+        // Build Algolia search request
+        const algoliaRequest = {
+            requests: [
+                {
+                    indexName: 'joyn_prod',
+                    params: `query=${encodeURIComponent(query)}&hitsPerPage=${hitsPerPage}&page=${page}`
+                }
+            ]
+        };
+        const headers = {
+            'x-algolia-application-id': ALGOLIA_APP_ID,
+            'x-algolia-api-key': state.algoliaApiKey,
+            'Content-Type': 'application/json'
+        };
+        const resp = http.POST(BASE_URL_ALGOLIA, JSON.stringify(algoliaRequest), headers, false);
+        if (!resp.isOk) {
+            throw new ScriptException('Search failed: ' + resp.code);
+        }
+        const data = JSON.parse(resp.body);
+        const hits = data.results?.[0]?.hits || [];
+        const nbPages = data.results?.[0]?.nbPages || 0;
+        log(`Found ${hits.length} results (page ${page + 1} of ${nbPages})`);
+        // Map hits to videos
+        const videos = hits.map((hit) => {
+            return JoynAssetToGrayjayVideo(config.id, {
+                id: hit.objectID || hit.id,
+                title: hit.title || hit.name,
+                description: hit.description,
+                path: hit.fullPath || hit.path,
+                contentType: hit.contentType,
+                images: {
+                    heroPortrait: hit.images?.heroPortrait,
+                    heroLandscape: hit.images?.heroLandscape,
+                    artLogo: hit.images?.artLogo
+                },
+                brand: hit.brand ? {
+                    id: hit.brand.id,
+                    name: hit.brand.name,
+                    logo: hit.brand.logo
+                } : undefined
+            });
+        }).filter((v) => v !== null);
+        const hasMore = (page + 1) < nbPages;
+        const context = { query, page, type, order, filters };
+        return new JoynSearchPager(videos, hasMore, context, page, searchCallback);
+    }
+    catch (e) {
+        log('Error in search: ' + e);
+        throw e;
+    }
 };
+function searchCallback(opts) {
+    return source.search(opts.query, opts.type, opts.order, opts.filters, { page: opts.page });
+}
 source.isChannelUrl = function (url) {
     return REGEX_CHANNEL_URL.test(url);
 };
@@ -204,7 +334,28 @@ source.getChannelContents = function (url, type, order, filters) {
 };
 source.getContentDetails = function (url) {
     log('getContentDetails called: ' + url);
-    throw new ScriptException('Not implemented yet');
+    try {
+        // Extract asset ID from URL
+        const assetId = getAssetIdFromUrl(url);
+        if (!assetId) {
+            throw new ScriptException('Could not extract asset ID from URL: ' + url);
+        }
+        log('Asset ID: ' + assetId);
+        // For series, we need to get the series details and list episodes
+        if (url.includes('/serien/')) {
+            return getSeriesDetails(url, assetId);
+        }
+        else if (url.includes('/filme/')) {
+            return getMovieDetails(url, assetId);
+        }
+        else {
+            throw new ScriptException('Unknown content type for URL: ' + url);
+        }
+    }
+    catch (e) {
+        log('Error in getContentDetails: ' + e);
+        throw e;
+    }
 };
 source.getChannelCapabilities = function () {
     return {
@@ -217,6 +368,10 @@ source.getChannelCapabilities = function () {
 function isTokenValid() {
     const currentTime = Date.now();
     return state.authToken && state.authTokenExpiration > currentTime;
+}
+function isAlgoliaKeyValid() {
+    const currentTime = Date.now();
+    return state.algoliaApiKey && state.algoliaApiKeyExpiration > currentTime;
 }
 function refreshAnonymousToken() {
     try {
@@ -233,6 +388,30 @@ function refreshAnonymousToken() {
     }
     catch (e) {
         log('Error refreshing token: ' + e);
+    }
+}
+function refreshAlgoliaApiKey() {
+    try {
+        const [error, data] = executeGqlQuery({
+            ...ALGOLIA_API_KEY_QUERY,
+            variables: {}
+        });
+        if (error) {
+            throw new ScriptException('Failed to get Algolia API key: ' + error.status);
+        }
+        if (data && data.algoliaApiKey) {
+            state.algoliaApiKey = data.algoliaApiKey.key || '';
+            // Parse the validUntil timestamp from the key (it's base64 encoded in the key string)
+            // For now, assume it expires in 24 hours
+            state.algoliaApiKeyExpiration = Date.now() + (24 * 60 * 60 * 1000);
+            log('Algolia API key refreshed');
+        }
+        else {
+            throw new ScriptException('No Algolia API key in response');
+        }
+    }
+    catch (e) {
+        log('Error refreshing Algolia key: ' + e);
     }
 }
 function executeGqlQuery(requestOptions) {
@@ -292,5 +471,16 @@ function executeGqlQuery(requestOptions) {
                 operationName: requestOptions.operationName
             }, null];
     }
+}
+// Helper Functions for Content Details
+function getSeriesDetails(url, assetId) {
+    log('getSeriesDetails for: ' + assetId);
+    // For now, return a basic stub
+    // We need to scrape the page or find the right GraphQL query
+    throw new ScriptException('Series details not yet implemented');
+}
+function getMovieDetails(url, assetId) {
+    log('getMovieDetails for: ' + assetId);
+    throw new ScriptException('Movie details not yet implemented');
 }
 log('Joyn plugin loaded');

@@ -2,6 +2,8 @@ export const BASE_URL = 'https://www.joyn.de';
 export const BASE_URL_API = 'https://api.joyn.de/graphql';
 export const BASE_URL_AUTH = 'https://auth.joyn.de/auth/anonymous';
 export const BASE_URL_IMG = 'https://img.joyn.de';
+export const BASE_URL_ALGOLIA = 'https://ffqrv35svv-dsn.algolia.net/1/indexes/*/queries';
+export const ALGOLIA_APP_ID = 'FFQRV35SVV';
 
 export const PLATFORM = 'Joyn';
 export const PLATFORM_CLAIMTYPE = 3;

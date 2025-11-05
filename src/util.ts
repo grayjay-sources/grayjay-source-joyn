@@ -1,4 +1,4 @@
-import { DEFAULT_HEADERS } from './constants';
+import { DEFAULT_HEADERS, BASE_URL } from './constants';
 
 export function applyCommonHeaders(): Record<string, string> {
   return { ...DEFAULT_HEADERS };
@@ -17,7 +17,28 @@ export function generateUUID(): string {
 }
 
 export function getAssetIdFromUrl(url: string): string | null {
-  const match = url.match(/\/([a-z0-9_-]+)$/i);
+  // Extract last segment from URL (may contain the asset ID)
+  // Joyn URLs can be:
+  // - /serien/navy-cis-la (series slug)
+  // - /serien/navy-cis-la/14-1-game-of-drones-bpidjn4j8opy (episode with ID at end)
+  // - /filme/transformers-aufstieg-der-bestien (movie slug)
+  
+  const parts = url.split('?')[0].split('/');
+  const lastSegment = parts[parts.length - 1];
+  
+  // Check if last segment contains an asset ID (starts with b_, d_, c_)
+  const assetMatch = lastSegment.match(/([bdc]_[a-z0-9]+)$/i);
+  if (assetMatch) {
+    return assetMatch[1];
+  }
+  
+  // Otherwise return the slug
+  return lastSegment || null;
+}
+
+export function getSeriesSlugFromUrl(url: string): string | null {
+  // Extract series slug from URLs like /serien/navy-cis-la or /serien/navy-cis-la/14-1-...
+  const match = url.match(/\/serien\/([^\/\?]+)/);
   return match ? match[1] : null;
 }
 

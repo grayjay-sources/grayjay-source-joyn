@@ -56,3 +56,35 @@ export const WATCH_NEXT_QUERY = {
     sha256Hash: '612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6'
   }
 };
+
+export const SEASON_QUERY = {
+  operationName: 'Season',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: 'ee2396bb1b7c9f800e5cefd0b341271b7213fceb4ebe18d5a30dab41d703009f'
+  }
+};
+
+export const MORE_LIKE_THIS_QUERY = {
+  operationName: 'LaneMoreLikeThis',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '74a9801aeb95bd68617d69aad5c8c8e780ccb185267aced71982edab7b5a0301'
+  }
+};
+
+export const RESUME_POSITIONS_QUERY = {
+  operationName: 'ResumePositionsWithToken',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '362a1247c64705097a83a48dc5fb99a29dd573fe276f0b2fb91e50c165752e0b'
+  }
+};
+
+export const ALGOLIA_API_KEY_QUERY = {
+  operationName: 'AlgoliaApiKey',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '21a962eb1b3f05c32b85cf8d015f1814563af3d4aede35d6e2f211838fdcfb61'
+  }
+};

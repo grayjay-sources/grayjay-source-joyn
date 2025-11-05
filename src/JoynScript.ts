@@ -3,13 +3,17 @@ let config: Config;
 const state = {
   authToken: '',
   authTokenExpiration: 0,
-  userId: ''
+  userId: '',
+  algoliaApiKey: '',
+  algoliaApiKeyExpiration: 0
 };
 
 import {
   BASE_URL,
   BASE_URL_API,
   BASE_URL_AUTH,
+  BASE_URL_ALGOLIA,
+  ALGOLIA_APP_ID,
   SEARCH_CAPABILITIES,
   PLATFORM,
   REGEX_VIDEO_URL,
@@ -25,13 +29,19 @@ import {
   GET_ME_STATE_QUERY,
   HERO_LANE_QUERY,
   RESUME_LANE_QUERY,
-  WATCH_NEXT_QUERY
+  WATCH_NEXT_QUERY,
+  SEASON_QUERY,
+  MORE_LIKE_THIS_QUERY,
+  RESUME_POSITIONS_QUERY,
+  ALGOLIA_API_KEY_QUERY
 } from './gqlQueries';
 
 import {
   applyCommonHeaders,
   log,
-  generateUUID
+  generateUUID,
+  getAssetIdFromUrl,
+  getSeriesSlugFromUrl
 } from './util';
 
 import {
@@ -58,6 +68,8 @@ source.enable = function (conf, settings, saveStateStr) {
       state.authToken = savedState.authToken || '';
       state.authTokenExpiration = savedState.authTokenExpiration || 0;
       state.userId = savedState.userId || '';
+      state.algoliaApiKey = savedState.algoliaApiKey || '';
+      state.algoliaApiKeyExpiration = savedState.algoliaApiKeyExpiration || 0;
     } catch (e) {
       log('Failed to parse saved state: ' + e);
     }
@@ -77,7 +89,9 @@ source.saveState = function () {
   return JSON.stringify({
     authToken: state.authToken,
     authTokenExpiration: state.authTokenExpiration,
-    userId: state.userId
+    userId: state.userId,
+    algoliaApiKey: state.algoliaApiKey,
+    algoliaApiKeyExpiration: state.algoliaApiKeyExpiration
   });
 };
 
@@ -155,9 +169,82 @@ source.getSearchCapabilities = function () {
 source.search = function (query, type, order, filters, continuationToken) {
   log('search called: ' + query);
   
-  // TODO: Implement search using Joyn's GraphQL API
-  return new VideoPager([], false, {});
+  try {
+    // Get Algolia API key if needed
+    if (!isAlgoliaKeyValid()) {
+      refreshAlgoliaApiKey();
+    }
+    
+    const page = continuationToken?.page || 0;
+    const hitsPerPage = 20;
+    
+    // Build Algolia search request
+    const algoliaRequest = {
+      requests: [
+        {
+          indexName: 'joyn_prod',
+          params: `query=${encodeURIComponent(query)}&hitsPerPage=${hitsPerPage}&page=${page}`
+        }
+      ]
+    };
+    
+    const headers = {
+      'x-algolia-application-id': ALGOLIA_APP_ID,
+      'x-algolia-api-key': state.algoliaApiKey,
+      'Content-Type': 'application/json'
+    };
+    
+    const resp = http.POST(
+      BASE_URL_ALGOLIA,
+      JSON.stringify(algoliaRequest),
+      headers,
+      false
+    );
+    
+    if (!resp.isOk) {
+      throw new ScriptException('Search failed: ' + resp.code);
+    }
+    
+    const data = JSON.parse(resp.body);
+    const hits = data.results?.[0]?.hits || [];
+    const nbPages = data.results?.[0]?.nbPages || 0;
+    
+    log(`Found ${hits.length} results (page ${page + 1} of ${nbPages})`);
+    
+    // Map hits to videos
+    const videos: PlatformVideo[] = hits.map((hit: any) => {
+      return JoynAssetToGrayjayVideo(config.id, {
+        id: hit.objectID || hit.id,
+        title: hit.title || hit.name,
+        description: hit.description,
+        path: hit.fullPath || hit.path,
+        contentType: hit.contentType,
+        images: {
+          heroPortrait: hit.images?.heroPortrait,
+          heroLandscape: hit.images?.heroLandscape,
+          artLogo: hit.images?.artLogo
+        },
+        brand: hit.brand ? {
+          id: hit.brand.id,
+          name: hit.brand.name,
+          logo: hit.brand.logo
+        } : undefined
+      });
+    }).filter((v: PlatformVideo) => v !== null);
+    
+    const hasMore = (page + 1) < nbPages;
+    const context = { query, page, type, order, filters };
+    
+    return new JoynSearchPager(videos, hasMore, context, page, searchCallback);
+  } catch (e) {
+    log('Error in search: ' + e);
+    throw e;
+  }
 };
+
+function searchCallback(opts: any) {
+  return source.search(opts.query, opts.type, opts.order, opts.filters, { page: opts.page });
+}
 
 source.isChannelUrl = function (url) {
   return REGEX_CHANNEL_URL.test(url);
@@ -184,7 +271,27 @@ source.getChannelContents = function (url, type, order, filters) {
 source.getContentDetails = function (url) {
   log('getContentDetails called: ' + url);
   
-  throw new ScriptException('Not implemented yet');
+  try {
+    // Extract asset ID from URL
+    const assetId = getAssetIdFromUrl(url);
+    if (!assetId) {
+      throw new ScriptException('Could not extract asset ID from URL: ' + url);
+    }
+    
+    log('Asset ID: ' + assetId);
+    
+    // For series, we need to get the series details and list episodes
+    if (url.includes('/serien/')) {
+      return getSeriesDetails(url, assetId);
+    } else if (url.includes('/filme/')) {
+      return getMovieDetails(url, assetId);
+    } else {
+      throw new ScriptException('Unknown content type for URL: ' + url);
+    }
+  } catch (e) {
+    log('Error in getContentDetails: ' + e);
+    throw e;
+  }
 };
 
 source.getChannelCapabilities = function () {
@@ -200,6 +307,11 @@ source.getChannelCapabilities = function () {
 function isTokenValid(): boolean {
   const currentTime = Date.now();
   return state.authToken && state.authTokenExpiration > currentTime;
+}
+
+function isAlgoliaKeyValid(): boolean {
+  const currentTime = Date.now();
+  return state.algoliaApiKey && state.algoliaApiKeyExpiration > currentTime;
 }
 
 function refreshAnonymousToken() {
@@ -225,6 +337,31 @@ function refreshAnonymousToken() {
     log('Anonymous token refreshed');
   } catch (e) {
     log('Error refreshing token: ' + e);
+  }
+}
+
+function refreshAlgoliaApiKey() {
+  try {
+    const [error, data] = executeGqlQuery({
+      ...ALGOLIA_API_KEY_QUERY,
+      variables: {}
+    });
+    
+    if (error) {
+      throw new ScriptException('Failed to get Algolia API key: ' + error.status);
+    }
+    
+    if (data && data.algoliaApiKey) {
+      state.algoliaApiKey = data.algoliaApiKey.key || '';
+      // Parse the validUntil timestamp from the key (it's base64 encoded in the key string)
+      // For now, assume it expires in 24 hours
+      state.algoliaApiKeyExpiration = Date.now() + (24 * 60 * 60 * 1000);
+      log('Algolia API key refreshed');
+    } else {
+      throw new ScriptException('No Algolia API key in response');
+    }
+  } catch (e) {
+    log('Error refreshing Algolia key: ' + e);
   }
 }
 
@@ -297,6 +434,22 @@ function executeGqlQuery(requestOptions: {
       operationName: requestOptions.operationName
     }, null];
   }
+}
+
+// Helper Functions for Content Details
+
+function getSeriesDetails(url: string, assetId: string): PlatformVideoDetails {
+  log('getSeriesDetails for: ' + assetId);
+  
+  // For now, return a basic stub
+  // We need to scrape the page or find the right GraphQL query
+  throw new ScriptException('Series details not yet implemented');
+}
+
+function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
+  log('getMovieDetails for: ' + assetId);
+  
+  throw new ScriptException('Movie details not yet implemented');
 }
 
 log('Joyn plugin loaded');

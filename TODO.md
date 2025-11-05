@@ -104,4 +104,3 @@
 - [ ] Improve error messages
 - [ ] Add retry logic for failed requests
 - [ ] Optimize GraphQL queries (only request needed fields)
-
