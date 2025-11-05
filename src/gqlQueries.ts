@@ -88,3 +88,35 @@ export const ALGOLIA_API_KEY_QUERY = {
     sha256Hash: '21a962eb1b3f05c32b85cf8d015f1814563af3d4aede35d6e2f211838fdcfb61'
   }
 };
+
+export const LIVE_CHANNELS_AND_EPG_QUERY = {
+  operationName: 'LiveChannelsAndEpg',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: 'b7703103ddd0516be6b49ed66186092a6c6f6d815ccc502a9f50800a8cc18dd2'
+  }
+};
+
+export const LIVESTREAM_OVERVIEW_BY_BRAND_QUERY = {
+  operationName: 'LivestreamOverviewByBrand',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '5a094812b90747ed18d2eac87f8b29a82e403a02f329d03478f7b2a5cf6ca463'
+  }
+};
+
+export const LIVESTREAM_QUERY = {
+  operationName: 'Livestream',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: 'd68f36bd5041345615c8af48e67af6f77faabda8831aea323a4c24b9f102eef2'
+  }
+};
+
+export const PAGE_LIVE_PLAYER_QUERY = {
+  operationName: 'PageLivePlayerClientSide',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '52b37a3cf5bc75e56026aed7b0d234874eeabd2eccd369d0cd3d3a6ea15ef566'
+  }
+};

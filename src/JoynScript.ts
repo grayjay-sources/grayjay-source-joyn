@@ -34,7 +34,11 @@ import {
   SEASON_QUERY,
   MORE_LIKE_THIS_QUERY,
   RESUME_POSITIONS_QUERY,
-  ALGOLIA_API_KEY_QUERY
+  ALGOLIA_API_KEY_QUERY,
+  LIVE_CHANNELS_AND_EPG_QUERY,
+  LIVESTREAM_OVERVIEW_BY_BRAND_QUERY,
+  LIVESTREAM_QUERY,
+  PAGE_LIVE_PLAYER_QUERY
 } from './gqlQueries';
 
 import {
@@ -286,7 +290,22 @@ source.getChannel = function (url) {
 source.getChannelContents = function (url, type, order, filters) {
   log('getChannelContents called: ' + url);
   
-  throw new ScriptException('Not implemented yet');
+  try {
+    // For live TV channels, return the current live stream as content
+    if (REGEX_LIVE_TV_URL.test(url)) {
+      return getLiveTVChannelContents(url);
+    }
+    
+    // For brand/mediathek channels, return their videos
+    if (REGEX_CHANNEL_URL.test(url)) {
+      return getBrandChannelContents(url, type, order, filters);
+    }
+    
+    throw new ScriptException('Unknown channel URL format: ' + url);
+  } catch (e) {
+    log('Error in getChannelContents: ' + e);
+    throw e;
+  }
 };
 
 source.getContentDetails = function (url) {
@@ -482,20 +501,42 @@ function getLiveTVChannel(url: string): PlatformChannel {
   const channelIdMatch = url.match(/channel_id=([0-9]+)/);
   const channelId = channelIdMatch ? channelIdMatch[1] : '';
   
-  // Query live lane to get live channels
+  if (!channelId) {
+    throw new ScriptException('No channel_id found in URL: ' + url);
+  }
+  
+  // Query for livestream overview
   const [error, data] = executeGqlQuery({
-    ...LIVE_LANE_QUERY,
+    ...LIVESTREAM_OVERVIEW_BY_BRAND_QUERY,
     variables: {
-      blockId: '266996:d50d6f558ab31ad3169c8afa1930f7b3'
+      id: channelId
     }
   });
   
   if (error) {
-    throw new ScriptException('Failed to get live channels: ' + error.status);
+    throw new ScriptException('Failed to get live channel: ' + error.status);
   }
   
-  // TODO: Parse live channel data and find the requested channel
-  throw new ScriptException('Live TV channel parsing not yet implemented');
+  // Parse the channel data
+  const brand = data?.brand;
+  if (!brand) {
+    throw new ScriptException('No brand data in response');
+  }
+  
+  const channel = new PlatformChannel({
+    id: new PlatformID(PLATFORM, brand.id || channelId, config.id, 3),
+    name: brand.name || 'Unknown Channel',
+    thumbnail: brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
+    banner: '',
+    subscribers: 0,
+    description: brand.description || '',
+    url: url,
+    urlAlternatives: [url],
+    links: {}
+  });
+  
+  log('Mapped live TV channel: ' + brand.name);
+  return channel;
 }
 
 function getBrandChannel(url: string): PlatformChannel {
@@ -503,6 +544,72 @@ function getBrandChannel(url: string): PlatformChannel {
   
   // TODO: Query for brand/mediathek details
   throw new ScriptException('Brand channel not yet implemented');
+}
+
+function getLiveTVChannelContents(url: string): VideoPager {
+  log('getLiveTVChannelContents for: ' + url);
+  
+  const channelIdMatch = url.match(/channel_id=([0-9]+)/);
+  const channelId = channelIdMatch ? channelIdMatch[1] : '';
+  
+  if (!channelId) {
+    return new VideoPager([], false, {});
+  }
+  
+  // Query for livestream data
+  const [error, data] = executeGqlQuery({
+    ...LIVESTREAM_OVERVIEW_BY_BRAND_QUERY,
+    variables: {
+      id: channelId
+    }
+  });
+  
+  if (error || !data?.brand) {
+    log('Failed to get livestream data: ' + (error?.status || 'No data'));
+    return new VideoPager([], false, {});
+  }
+  
+  const brand = data.brand;
+  const livestreams = brand.livestreams || [];
+  
+  const videos: PlatformVideo[] = livestreams.map((stream: any) => {
+    const currentProgram = stream.currentProgram || {};
+    
+    return new PlatformVideo({
+      id: new PlatformID(PLATFORM, stream.id || '', config.id, 3),
+      name: currentProgram.title || brand.name || 'Live',
+      thumbnails: new Thumbnails([
+        new Thumbnail(
+          stream.images?.logo 
+            ? `https://img.joyn.de/${stream.images.logo}/profile:nextgen-web-livestill-503x283.webp`
+            : '',
+          0
+        )
+      ]),
+      author: new PlatformAuthorLink(
+        new PlatformID(PLATFORM, brand.id || '', config.id, 3),
+        brand.name || '',
+        url,
+        brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
+        0
+      ),
+      uploadDate: 0,
+      duration: 0,
+      viewCount: 0,
+      url: `${BASE_URL}/play/live-tv?channel_id=${channelId}`,
+      isLive: true
+    });
+  });
+  
+  log(`Found ${videos.length} live streams for channel`);
+  return new VideoPager(videos, false, {});
+}
+
+function getBrandChannelContents(url: string, type: string, order: string, filters: any): VideoPager {
+  log('getBrandChannelContents for: ' + url);
+  
+  // TODO: Query for brand content
+  return new VideoPager([], false, {});
 }
 
 // Helper Functions for Content Details
