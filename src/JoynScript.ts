@@ -34,6 +34,18 @@ import {
   generateUUID
 } from './util';
 
+import {
+  JoynAssetToGrayjayVideo,
+  JoynBrandToGrayjayChannel,
+  JoynLiveChannelToGrayjayChannel
+} from './Mappers';
+
+import {
+  JoynVideoPager,
+  JoynChannelPager,
+  JoynSearchPager
+} from './Pagers';
+
 //Source Methods
 source.enable = function (conf, settings, saveStateStr) {
   config = conf ?? {};
@@ -87,8 +99,44 @@ source.getHome = function (continuationToken) {
       throw new ScriptException('Failed to get home: ' + error.status);
     }
     
-    // TODO: Parse data and return videos
-    return new VideoPager([], false, {});
+    // Parse the landing page data
+    const videos: PlatformVideo[] = [];
+    
+    if (data && data.page && data.page.blocks) {
+      for (const block of data.page.blocks) {
+        if (block.assets && Array.isArray(block.assets)) {
+          for (const asset of block.assets) {
+            try {
+              const video = JoynAssetToGrayjayVideo(config.id, asset);
+              videos.push(video);
+            } catch (e) {
+              log('Failed to map asset: ' + e);
+            }
+          }
+        }
+        
+        // Also check for nested lanes
+        if (block.lanes && Array.isArray(block.lanes)) {
+          for (const lane of block.lanes) {
+            if (lane.assets && Array.isArray(lane.assets)) {
+              for (const asset of lane.assets) {
+                try {
+                  const video = JoynAssetToGrayjayVideo(config.id, asset);
+                  videos.push(video);
+                } catch (e) {
+                  log('Failed to map lane asset: ' + e);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    log(`Mapped ${videos.length} videos from home`);
+    
+    // For now, no pagination
+    return new VideoPager(videos, false, {});
   } catch (e) {
     log('Error in getHome: ' + e);
     throw e;

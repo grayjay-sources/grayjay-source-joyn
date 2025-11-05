@@ -56,4 +56,3 @@ export const WATCH_NEXT_QUERY = {
     sha256Hash: '612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6'
   }
 };
-
