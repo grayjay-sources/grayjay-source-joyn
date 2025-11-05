@@ -128,3 +128,11 @@ export const EPISODE_DETAIL_PAGE_QUERY = {
     sha256Hash: 'c4bcacee94d38133e87879dad8d69bd8a74c7326262a1848cceb964b871c1551'
   }
 };
+
+export const PAGE_SERIES_EPISODE_PLAYER_QUERY = {
+  operationName: 'PageSeriesEpisodePlayerClientSide',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '864e9acb09fed428ad277efef2351295e76518b6803e63d5831a4150b96f9051'
+  }
+};
