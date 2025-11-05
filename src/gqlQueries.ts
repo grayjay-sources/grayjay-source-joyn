@@ -120,3 +120,11 @@ export const PAGE_LIVE_PLAYER_QUERY = {
     sha256Hash: '52b37a3cf5bc75e56026aed7b0d234874eeabd2eccd369d0cd3d3a6ea15ef566'
   }
 };
+
+export const EPISODE_DETAIL_PAGE_QUERY = {
+  operationName: 'EpisodeDetailPageStatic',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: 'c4bcacee94d38133e87879dad8d69bd8a74c7326262a1848cceb964b871c1551'
+  }
+};

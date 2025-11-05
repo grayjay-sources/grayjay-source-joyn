@@ -38,7 +38,8 @@ import {
   LIVE_CHANNELS_AND_EPG_QUERY,
   LIVESTREAM_OVERVIEW_BY_BRAND_QUERY,
   LIVESTREAM_QUERY,
-  PAGE_LIVE_PLAYER_QUERY
+  PAGE_LIVE_PLAYER_QUERY,
+  EPISODE_DETAIL_PAGE_QUERY
 } from './gqlQueries';
 
 import {
@@ -617,8 +618,67 @@ function getBrandChannelContents(url: string, type: string, order: string, filte
 function getEpisodeDetails(url: string, assetId: string): PlatformVideoDetails {
   log('getEpisodeDetails for: ' + assetId);
   
-  // TODO: Query for episode metadata and video sources
-  throw new ScriptException('Episode details not yet implemented');
+  // Extract the full path for the query
+  const pathMatch = url.match(/\/serien\/[^?]+/);
+  const path = pathMatch ? pathMatch[0] : '';
+  
+  if (!path) {
+    throw new ScriptException('Could not extract path from URL');
+  }
+  
+  // Query for episode details
+  const [error, data] = executeGqlQuery({
+    ...EPISODE_DETAIL_PAGE_QUERY,
+    variables: {
+      path: path
+    }
+  });
+  
+  if (error) {
+    throw new ScriptException('Failed to get episode details: ' + error.status);
+  }
+  
+  const asset = data?.page?.asset;
+  if (!asset) {
+    throw new ScriptException('No asset data in response');
+  }
+  
+  // Parse episode details
+  const episode = asset.episode || {};
+  const series = asset.series || {};
+  const brand = series.brand || asset.brand || {};
+  
+  const videoDetails: PlatformVideoDetailsDef = {
+    id: new PlatformID(PLATFORM, asset.id || assetId, config.id, 3),
+    name: asset.title || episode.title || 'Unknown Episode',
+    thumbnails: new Thumbnails([
+      new Thumbnail(
+        asset.images?.heroLandscape
+          ? `https://img.joyn.de/${asset.images.heroLandscape}/profile:nextgen-web-herolandscape-1920x.webp`
+          : '',
+        0
+      )
+    ]),
+    author: new PlatformAuthorLink(
+      new PlatformID(PLATFORM, brand.id || '', config.id, 3),
+      brand.name || '',
+      brand.id ? `${BASE_URL}/mediatheken/${brand.id}` : '',
+      brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
+      0
+    ),
+    uploadDate: asset.publicationDate ? Math.floor(new Date(asset.publicationDate).getTime() / 1000) : 0,
+    duration: asset.duration || 0,
+    viewCount: 0,
+    url: url,
+    isLive: false,
+    description: asset.description || episode.description || '',
+    video: new VideoSourceDescriptor([]), // Will be filled by video extraction
+    rating: new RatingLikes(0),
+    subtitles: []
+  };
+  
+  log('Mapped episode details: ' + asset.title);
+  return new PlatformVideoDetails(videoDetails);
 }
 
 function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
@@ -638,10 +698,55 @@ function getSeriesPlaylist(url: string): PlatformPlaylistDetails {
     throw new ScriptException('Could not extract series slug from URL: ' + url);
   }
   
-  // TODO: Query for series metadata
-  // TODO: Query for all seasons using SEASON_QUERY
-  // TODO: Build playlist with all episodes
-  throw new ScriptException('Series playlist not yet implemented');
+  // For now, use the landing page query to get series info
+  // Extract path from URL
+  const pathMatch = url.match(/\/serien\/[^?]+/);
+  const path = pathMatch ? pathMatch[0] : '/serien/' + seriesSlug;
+  
+  const [error, data] = executeGqlQuery({
+    ...LANDING_PAGE_QUERY,
+    variables: {
+      path: path,
+      variation: 'Default'
+    }
+  });
+  
+  if (error) {
+    throw new ScriptException('Failed to get series data: ' + error.status);
+  }
+  
+  const page = data?.page;
+  if (!page) {
+    throw new ScriptException('No page data in response');
+  }
+  
+  // Extract series metadata from page
+  const asset = page.asset || {};
+  const series = asset.series || asset;
+  const brand = series.brand || {};
+  
+  const videoCount = series.numberOfEpisodes || 0;
+  const thumbnail = series.images?.heroPortrait
+    ? `https://img.joyn.de/${series.images.heroPortrait}/profile:nextgen-web-heroportrait-243x365.webp`
+    : '';
+  
+  const playlistDetails: PlatformPlaylistDetailsDef = {
+    id: new PlatformID(PLATFORM, series.id || seriesSlug, config.id, 3),
+    name: series.title || 'Unknown Series',
+    author: new PlatformAuthorLink(
+      new PlatformID(PLATFORM, brand.id || '', config.id, 3),
+      brand.name || '',
+      brand.id ? `${BASE_URL}/mediatheken/${brand.id}` : '',
+      brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
+      0
+    ),
+    thumbnail: thumbnail,
+    videoCount: videoCount,
+    url: url
+  };
+  
+  log('Mapped series playlist: ' + series.title);
+  return new PlatformPlaylistDetails(playlistDetails);
 }
 
 log('Joyn plugin loaded');
