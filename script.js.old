@@ -77,4 +77,3 @@ function log(message) {
 }
 
 log("Joyn script loaded");
-

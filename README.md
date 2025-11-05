@@ -58,4 +58,3 @@ MIT License - See [LICENSE](LICENSE) for details
 - [Joyn Official Site](https://www.joyn.de)
 - [GrayJay](https://grayjay.app)
 - [Plugin Repository](https://github.com/grayjay-sources/grayjay-source-joyn)
-

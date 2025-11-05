@@ -6,9 +6,9 @@
   "platformUrl": "https://joyn.de",
   "sourceUrl": "https://raw.githubusercontent.com/grayjay-sources/grayjay-source-joyn/main/config.json",
   "repositoryUrl": "https://github.com/grayjay-sources/grayjay-source-joyn",
-  "scriptUrl": "./script.js",
+  "scriptUrl": "./build/JoynScript.js",
   "version": 1,
-  "iconUrl": "./icon.png",
+  "iconUrl": "./build/JoynIcon.png",
   "id": "joyn-streaming-platform",
   "scriptSignature": "",
   "scriptPublicKey": "",
@@ -32,4 +32,3 @@
     "1": ["Initial version: Basic plugin structure"]
   }
 }
-

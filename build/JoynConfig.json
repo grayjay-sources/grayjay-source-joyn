@@ -1,0 +1,34 @@
+{
+  "name": "Joyn",
+  "description": "Joyn streaming platform - German entertainment and live TV",
+  "author": "Bluscream, Cursor.AI",
+  "authorUrl": "https://github.com/Bluscream",
+  "platformUrl": "https://joyn.de",
+  "sourceUrl": "https://raw.githubusercontent.com/grayjay-sources/grayjay-source-joyn/main/config.json",
+  "repositoryUrl": "https://github.com/grayjay-sources/grayjay-source-joyn",
+  "scriptUrl": "./build/JoynScript.js",
+  "version": 1,
+  "iconUrl": "./build/JoynIcon.png",
+  "id": "joyn-streaming-platform",
+  "scriptSignature": "",
+  "scriptPublicKey": "",
+  "packages": ["Http", "DOMParser"],
+  "allowEval": false,
+  "allowUrls": [
+    "joyn.de",
+    "www.joyn.de",
+    "*.joyn.de"
+  ],
+  "supportedClaimTypes": [3],
+  "authentication": {
+    "loginUrl": "https://www.joyn.de/login",
+    "userAgent": "Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.230 Mobile Safari/537.36",
+    "domainHeadersToFind": {
+      "joyn.de": []
+    }
+  },
+  "settings": [],
+  "changelog": {
+    "1": ["Initial version: Basic plugin structure"]
+  }
+}
