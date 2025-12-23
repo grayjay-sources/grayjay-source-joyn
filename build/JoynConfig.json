@@ -7,7 +7,7 @@
   "sourceUrl": "https://localhost:3000/build/JoynConfig.json",
   "repositoryUrl": "https://github.com/grayjay-sources/grayjay-source-joyn",
   "scriptUrl": "./JoynScript.js",
-  "version": 3,
+  "version": 4,
   "iconUrl": "./JoynIcon.png",
   "id": "joyn-streaming-platform",
   "scriptSignature": "",
@@ -42,7 +42,8 @@
   "changelog": {
     "1": ["Initial version: Basic plugin structure"],
     "2": ["Added support for series playlists and improved error handling"],
-    "3": ["Fixed thumbnail URLs - now correctly handles GraphQL image fields (heroLandscapeImage, heroPortraitImage)"]
+    "3": ["Fixed thumbnail URLs - now correctly handles GraphQL image fields (heroLandscapeImage, heroPortraitImage)"],
+    "4": ["Fixed thumbnail extraction from GraphQL response (heroImageDesktop, heroImageMobile, primaryImage)", "Fixed uploadDate extraction (now uses productionYear as fallback)", "Fixed duration extraction (now correctly reads from asset.video.duration)", "Added support for /video/ URLs", "Fixed path.startsWith error in image URL building", "Improved content details serialization for debugging"]
   },
   "Testing": {
     "GetContentDetails": {

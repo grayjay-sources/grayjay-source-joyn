@@ -24,6 +24,7 @@ import {
   REGEX_EPISODE_URL,
   REGEX_SERIES_URL,
   REGEX_MOVIE_URL,
+  REGEX_VIDEO_URL,
   REGEX_LIVE_TV_URL,
   REGEX_CHANNEL_URL
 } from './constants';
@@ -56,7 +57,8 @@ import {
   log,
   generateUUID,
   getAssetIdFromUrl,
-  getSeriesSlugFromUrl
+  getSeriesSlugFromUrl,
+  parseISO8601Duration
 } from './util';
 
 import {
@@ -303,9 +305,9 @@ source.isChannelUrl = function (url) {
 };
 
 source.isContentDetailsUrl = function (url) {
-  // Content details are episodes and movies
+  // Content details are episodes, movies, and direct video URLs
   // Also include series URLs - Grayjay may route them to VideoLoad instead of PlaylistLoad
-  return REGEX_EPISODE_URL.test(url) || REGEX_MOVIE_URL.test(url) || REGEX_SERIES_URL.test(url);
+  return REGEX_EPISODE_URL.test(url) || REGEX_MOVIE_URL.test(url) || REGEX_SERIES_URL.test(url) || REGEX_VIDEO_URL.test(url);
 };
 
 source.isPlaylistUrl = function (url) {
@@ -380,6 +382,11 @@ source.getContentDetails = function (url) {
       return getEpisodeDetails(url, assetId);
     } else if (REGEX_MOVIE_URL.test(url)) {
       return getMovieDetails(url, assetId);
+    } else if (REGEX_VIDEO_URL.test(url)) {
+      // For /video/ URLs, try to get video details by ID
+      // These are typically direct video assets, so we'll try to extract sources directly
+      log('Video URL detected - attempting to get video details by ID');
+      return getVideoDetailsById(url, assetId);
     } else {
       throw new ScriptException('Unknown content type for URL: ' + url);
     }
@@ -414,6 +421,28 @@ source.getChannelCapabilities = function () {
 };
 
 // Helper Functions
+
+function serializeContentDetails(obj: any, depth: number = 0): any {
+  if (depth > 10) return '[Max Depth]'; // Prevent infinite recursion
+  if (obj === null || obj === undefined) return obj;
+  if (typeof obj !== 'object') return obj;
+  
+  // Handle arrays
+  if (Array.isArray(obj)) {
+    return obj.map((item: any) => serializeContentDetails(item, depth + 1));
+  }
+  
+  // For objects, iterate over all key-value pairs and recursively serialize each value
+  const result: any = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      // Recursively serialize the value
+      result[key] = serializeContentDetails(value, depth + 1);
+    }
+  }
+  return result;
+}
 
 function isTokenValid(): boolean {
   const currentTime = Date.now();
@@ -1382,6 +1411,30 @@ function getEpisodeDetails(url: string, assetId: string): PlatformVideoDetails {
   // Extract video sources - pass video ID, not episode ID
   const videoSources = extractVideoSources(path, videoId, false);
   
+  // Extract date - check multiple possible fields
+  let uploadDate = 0;
+  if (asset.publicationDate) {
+    uploadDate = Math.floor(new Date(asset.publicationDate).getTime() / 1000);
+  } else if (asset.releaseDate) {
+    uploadDate = Math.floor(new Date(asset.releaseDate).getTime() / 1000);
+  } else if (asset.productionYear) {
+    // If only year is available, use January 1st of that year
+    uploadDate = Math.floor(new Date(asset.productionYear, 0, 1).getTime() / 1000);
+  }
+  
+  // Extract duration - check multiple possible fields
+  let duration = 0;
+  if (asset.duration) {
+    duration = asset.duration;
+  } else if (asset.video?.duration) {
+    duration = asset.video.duration;
+  } else if (episode.duration) {
+    duration = episode.duration;
+  } else if (typeof asset.duration === 'string') {
+    // If duration is in ISO8601 format (PT1H30M), parse it
+    duration = parseISO8601Duration(asset.duration);
+  }
+  
   const videoDetails: PlatformVideoDetailsDef = {
     id: new PlatformID(PLATFORM, asset.id || assetId, config.id, 3),
     name: asset.title || episode.title || 'Unknown Episode',
@@ -1402,8 +1455,8 @@ function getEpisodeDetails(url: string, assetId: string): PlatformVideoDetails {
       brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
       0
     ),
-    uploadDate: asset.publicationDate ? Math.floor(new Date(asset.publicationDate).getTime() / 1000) : 0,
-    duration: asset.duration || 0,
+    uploadDate: uploadDate,
+    duration: duration,
     viewCount: 0,
     url: url,
     isLive: false,
@@ -1414,6 +1467,17 @@ function getEpisodeDetails(url: string, assetId: string): PlatformVideoDetails {
   };
   
   log('Mapped episode details: ' + asset.title);
+  
+  // Log full content details response
+  try {
+    const serialized = serializeContentDetails(videoDetails);
+    const detailsStr = JSON.stringify(serialized, null, 2);
+    log('Full ContentDetails Response (Episode):\n' + detailsStr);
+  } catch (e) {
+    log('Failed to serialize content details: ' + e);
+    log('ContentDetails keys: ' + Object.keys(videoDetails).join(', '));
+  }
+  
   return new PlatformVideoDetails(videoDetails);
 }
 
@@ -1479,18 +1543,71 @@ function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
   // Extract video sources (movies) - pass video ID, not movie ID
   const videoSources = extractVideoSources(path, videoId, true);
   
+  // Build thumbnail - GraphQL returns heroImageDesktop, heroImageMobile, primaryImage (object), cardImage
+  // primaryImage might be an object, so extract the path if it's an object
+  let imagePath: string | undefined;
+  
+  // Try heroImageDesktop first (landscape)
+  if (asset.heroImageDesktop) {
+    imagePath = typeof asset.heroImageDesktop === 'string' ? asset.heroImageDesktop : asset.heroImageDesktop.path || asset.heroImageDesktop.url;
+  }
+  // Then try heroImageMobile (portrait)
+  else if (asset.heroImageMobile) {
+    imagePath = typeof asset.heroImageMobile === 'string' ? asset.heroImageMobile : asset.heroImageMobile.path || asset.heroImageMobile.url;
+  }
+  // Then try primaryImage (might be object)
+  else if (asset.primaryImage) {
+    imagePath = typeof asset.primaryImage === 'string' ? asset.primaryImage : asset.primaryImage.path || asset.primaryImage.url;
+  }
+  // Then try cardImage
+  else if (asset.cardImage) {
+    imagePath = typeof asset.cardImage === 'string' ? asset.cardImage : asset.cardImage.path || asset.cardImage.url;
+  }
+  // Fallback to old field names for compatibility
+  else if (asset.heroLandscapeImage || asset.images?.heroLandscape) {
+    imagePath = asset.heroLandscapeImage || asset.images?.heroLandscape;
+  }
+  else if (asset.heroPortraitImage || asset.images?.heroPortrait) {
+    imagePath = asset.heroPortraitImage || asset.images?.heroPortrait;
+  }
+  
+  // Determine profile based on which image we're using
+  const profile = asset.heroImageDesktop || (asset.heroLandscapeImage || asset.images?.heroLandscape)
+    ? 'nextgen-web-herolandscape-1920x'
+    : 'nextgen-web-heroportrait-243x365';
+  
+  const thumbnailUrl = imagePath ? buildImageUrl(imagePath, profile) : '';
+  
+  // Extract date - check multiple possible fields
+  let uploadDate = 0;
+  if (asset.publicationDate) {
+    uploadDate = Math.floor(new Date(asset.publicationDate).getTime() / 1000);
+  } else if (asset.releaseDate) {
+    uploadDate = Math.floor(new Date(asset.releaseDate).getTime() / 1000);
+  } else if (asset.productionYear) {
+    // If only year is available, use January 1st of that year
+    uploadDate = Math.floor(new Date(asset.productionYear, 0, 1).getTime() / 1000);
+  }
+  
+  // Extract duration - check multiple possible fields
+  let duration = 0;
+  if (asset.duration) {
+    duration = asset.duration;
+  } else if (asset.video?.duration) {
+    duration = asset.video.duration;
+  } else if (typeof asset.duration === 'string') {
+    // If duration is in ISO8601 format (PT1H30M), parse it
+    duration = parseISO8601Duration(asset.duration);
+  }
+  
+  log('Date fields - publicationDate: ' + (asset.publicationDate || 'NOT PRESENT') + ', releaseDate: ' + (asset.releaseDate || 'NOT PRESENT') + ', productionYear: ' + (asset.productionYear || 'NOT PRESENT') + ', uploadDate: ' + uploadDate);
+  log('Duration fields - asset.duration: ' + (asset.duration || 'NOT PRESENT') + ', asset.video?.duration: ' + (asset.video?.duration || 'NOT PRESENT') + ', final duration: ' + duration);
+  
   const videoDetails: PlatformVideoDetailsDef = {
     id: new PlatformID(PLATFORM, asset.id || assetId, config.id, 3),
     name: asset.title || assetId,
     thumbnails: new Thumbnails([
-      new Thumbnail(
-        (asset.heroLandscapeImage || asset.images?.heroLandscape)
-          ? buildImageUrl(asset.heroLandscapeImage || asset.images?.heroLandscape || '', 'nextgen-web-herolandscape-1920x')
-          : (asset.heroPortraitImage || asset.images?.heroPortrait)
-          ? buildImageUrl(asset.heroPortraitImage || asset.images?.heroPortrait || '', 'nextgen-web-heroportrait-243x365')
-          : '',
-        0
-      )
+      new Thumbnail(thumbnailUrl, 0)
     ]),
     author: new PlatformAuthorLink(
       new PlatformID(PLATFORM, brand.id || '', config.id, 3),
@@ -1499,8 +1616,8 @@ function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
       brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '',
       0
     ),
-    uploadDate: asset.publicationDate ? Math.floor(new Date(asset.publicationDate).getTime() / 1000) : 0,
-    duration: asset.duration || 0,
+    uploadDate: uploadDate,
+    duration: duration,
     viewCount: 0,
     url: url,
     isLive: false,
@@ -1511,7 +1628,166 @@ function getMovieDetails(url: string, assetId: string): PlatformVideoDetails {
   };
   
   log('Mapped movie details: ' + asset.title);
+  
+  // Log full content details response
+  try {
+    const serialized = serializeContentDetails(videoDetails);
+    const detailsStr = JSON.stringify(serialized, null, 2);
+    log('Full ContentDetails Response (Movie):\n' + detailsStr);
+  } catch (e) {
+    log('Failed to serialize content details: ' + e);
+    log('ContentDetails keys: ' + Object.keys(videoDetails).join(', '));
+  }
+  
   return new PlatformVideoDetails(videoDetails);
+}
+
+function getVideoDetailsById(url: string, videoId: string): PlatformVideoDetails {
+  log('getVideoDetailsById for: ' + videoId);
+  
+  // For /video/ URLs, we only have the video ID, not a path
+  // Try to extract video sources directly using the VOD API
+  // We'll create minimal video details since we don't have full metadata
+  
+  // Extract video sources using the video ID directly
+  const videoSources = extractVideoSourcesById(videoId);
+  
+  // Create minimal video details
+  const videoDetails: PlatformVideoDetailsDef = {
+    id: new PlatformID(PLATFORM, videoId, config.id, 3),
+    name: 'Video ' + videoId, // Fallback name since we don't have metadata
+    thumbnails: new Thumbnails([new Thumbnail('', 0)]),
+    author: new PlatformAuthorLink(
+      new PlatformID(PLATFORM, 'joyn', config.id, 3),
+      'Joyn',
+      BASE_URL,
+      '',
+      0
+    ),
+    uploadDate: 0,
+    duration: 0,
+    viewCount: 0,
+    url: url,
+    isLive: false,
+    description: '',
+    video: videoSources,
+    rating: new RatingLikes(0),
+    subtitles: []
+  };
+  
+  log('Mapped video details by ID: ' + videoId);
+  
+  // Log full content details response
+  try {
+    const serialized = serializeContentDetails(videoDetails);
+    const detailsStr = JSON.stringify(serialized, null, 2);
+    log('Full ContentDetails Response (Video by ID):\n' + detailsStr);
+  } catch (e) {
+    log('Failed to serialize content details: ' + e);
+    log('ContentDetails keys: ' + Object.keys(videoDetails).join(', '));
+  }
+  
+  return new PlatformVideoDetails(videoDetails);
+}
+
+function extractVideoSourcesById(videoId: string): VideoSourceDescriptor {
+  log('Extracting video sources by ID: ' + videoId);
+  
+  try {
+    // Get entitlement token if needed
+    if (!isEntitlementTokenValid()) {
+      refreshEntitlementToken(videoId);
+    }
+    
+    if (!state.entitlementToken) {
+      log('No entitlement token available for VOD API');
+      return new VideoSourceDescriptor([]);
+    }
+    
+    // Refresh auth token if needed
+    if (!isTokenValid()) {
+      refreshAnonymousToken();
+    }
+    
+    if (!state.authToken) {
+      log('No auth token available for VOD API');
+      return new VideoSourceDescriptor([]);
+    }
+    
+    // Use the default HTTP client to maintain session state
+    const httpClient = http.getDefaultClient(false);
+    
+    const vodUrl = `https://api.vod-prd.s.joyn.de/v1/asset/${videoId}/playlist`;
+    
+    // Build request body
+    const requestBody = {
+      manufacturer: 'unknown',
+      platform: 'browser',
+      maxSecurityLevel: 1,
+      streamingFormat: 'dash',
+      model: 'unknown',
+      protectionSystem: 'widevine',
+      enableDolbyAudio: false,
+      enableSubtitles: true,
+      variantName: 'default'
+    };
+    
+    // Build headers matching browser exactly
+    const headers = {
+      ...applyCommonHeaders(),
+      'sec-fetch-site': 'same-site',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-dest': 'empty',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${state.authToken}`,
+      'X-Entitlement-Token': state.entitlementToken
+    };
+    
+    log('Trying VOD API endpoint: ' + vodUrl + ' (videoId: ' + videoId + ', entitlementToken: present)');
+    log('Request body: ' + JSON.stringify(requestBody));
+    log('Request headers: Matching browser exactly (sec-fetch-*, sec-ch-ua, priority, etc.)');
+    log('Using default HTTP client to maintain session state');
+    
+    const response = httpClient.POST(vodUrl, JSON.stringify(requestBody), headers, false);
+    
+    if (response.status === 200) {
+      try {
+        const vodData = JSON.parse(response.body);
+        
+        // Extract manifest URLs from response
+        const sources: any[] = [];
+        
+        if (vodData.hlsManifestUrl) {
+          sources.push({
+            url: vodData.hlsManifestUrl,
+            mimeType: 'application/vnd.apple.mpegurl',
+            quality: 'auto'
+          });
+        }
+        
+        if (vodData.dashManifestUrl) {
+          sources.push({
+            url: vodData.dashManifestUrl,
+            mimeType: 'application/dash+xml',
+            quality: 'auto'
+          });
+        }
+        
+        if (sources.length > 0) {
+          log('Successfully extracted ' + sources.length + ' video sources from VOD API');
+          return new VideoSourceDescriptor(sources);
+        }
+      } catch (e) {
+        log('Failed to parse VOD API response: ' + e);
+      }
+    } else {
+      log('VOD API returned ' + response.status + ': ' + response.body);
+    }
+  } catch (e) {
+    log('Error extracting video sources by ID: ' + e);
+  }
+  
+  return new VideoSourceDescriptor([]);
 }
 
 // Helper Functions for Playlists
@@ -1590,6 +1866,17 @@ function getSeriesAsVideoDetails(url: string): PlatformVideoDetails {
   };
   
   log('Mapped series as video details: ' + series.title);
+  
+  // Log full content details response
+  try {
+    const serialized = serializeContentDetails(videoDetails);
+    const detailsStr = JSON.stringify(serialized, null, 2);
+    log('Full ContentDetails Response (Series as Video):\n' + detailsStr);
+  } catch (e) {
+    log('Failed to serialize content details: ' + e);
+    log('ContentDetails keys: ' + Object.keys(videoDetails).join(', '));
+  }
+  
   return new PlatformVideoDetails(videoDetails);
 }
 

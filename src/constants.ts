@@ -15,6 +15,7 @@ export const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 export const REGEX_EPISODE_URL = /^https:\/\/(?:www\.)?joyn\.de\/serien\/[a-zA-Z0-9-]+\/[0-9]+-[0-9]+-[a-zA-Z0-9-]+$/i;
 export const REGEX_MOVIE_URL = /^https:\/\/(?:www\.)?joyn\.de\/filme\/[a-zA-Z0-9-]+$/i;
 export const REGEX_SERIES_URL = /^https:\/\/(?:www\.)?joyn\.de\/serien\/[a-zA-Z0-9-]+$/i;
+export const REGEX_VIDEO_URL = /^https:\/\/(?:www\.)?joyn\.de\/video\/[a-zA-Z0-9_-]+$/i;
 export const REGEX_LIVE_TV_URL = /^https:\/\/(?:www\.)?joyn\.de\/play\/live-tv(\?channel_id=[0-9]+)?$/i;
 export const REGEX_CHANNEL_URL = /^https:\/\/(?:www\.)?joyn\.de\/mediatheken\/[a-zA-Z0-9-]+$/i;
 
