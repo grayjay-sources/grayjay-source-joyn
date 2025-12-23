@@ -1,0 +1,968 @@
+[19:51:22 INF] jayjay v3.1.0
+[19:51:22 INF] Starting page inspection...
+[19:51:22 INF] 
+Inspecting page: https://www.joyn.de
+[19:51:22 INF] Timeout: 30000ms
+[19:51:22 INF] Wait time: 3000ms
+[19:51:22 INF] Output format: json
+[19:51:22 INF] Headless: True
+[19:51:22 INF] Viewport: 1920x1080
+[19:51:22 INF] Wait until: networkidle
+[19:51:22 INF] Auto-scroll: True
+[19:51:22 INF] Filter types: api, --show-headers
+[19:51:22 INF] Initializing browser...
+[19:51:24 INF] Loading page: https://www.joyn.de
+[19:51:28 INF] Page loaded in 3785ms
+[19:51:28 INF] Waiting 3000ms for additional network activity...
+[19:51:31 INF] Auto-scrolling page to trigger lazy loading...
+[19:51:37 INF] Captured 315 network requests
+[19:51:37 INF] {
+  "url": "https://www.joyn.de",
+  "title": "Joyn - Serien, Filme, Sport \u0026 Live TV jederzeit streamen",
+  "loadTime": 3785,
+  "totalRequests": 66,
+  "requests": [
+    {
+      "url": "https://ab-testing.prd.data.s.joyn.de/api/v1/experiments/users/d1a9ee39-3c7c-4159-9fa8-fe2f5cfd7f03?platform=web\u0026requester=web_client\u0026distribution_tenant=JOYN",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 87,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://aggregator.service.usercentrics.eu/aggregate/de?templates=-Gj2r8bd6@1.0.7,-KZPzxAsf@1.0.16,01qALHvhD@1.0.0,13v5rUCXc@1.0.0,1A7kdSDFhK3U1f@1.0.0,1ba4yQk0W@4.1.2,1xpTEWY44@1.0.0,2Bjp0et1p@1.0.0,2IcSrIxD8@1.0.1,2RKzr0kG8@1.0.0,3d_zXyiF3@1.0.0,458ZXOCa7@1.0.0,4NIAkZsNE@2.2.0,4ltiKspwp@1.0.0,5-03wbc0am4zim@1.1.0,5FP9tjYNG@1.0.0,64sqiCjqt@1.0.0,6PEQM-sZb@2.1.15,7M0cXS2pQ@10.7.3,7jBdshciY@1.0.0,7tNwk5fZ9@1.1.2,87JYasXPF@1.5.13,8haTzpme2@2.1.0,9Q2qrmB3@7.4.12,9_mINmsAo@1.0.0,AMItrBs0R@1.0.0,B1Hk_zoTX@18.3.21,BJ59EidsWQ@25.7.28,BJTzqNi_i-m@5.3.9,BJz7qNsdj-7@15.8.20,BkeKqEjuoZQ@9.4.12,BsXel8D_1mgvEY@1.0.0,BySu54sOjZQ@5.3.4,DG6-aLzBO@1.0.0,DHS2sEi4b@5.1.4,FY68QOwP5@1.1.0,FZ72hT8fW@2.1.0,F_T7R5yg6@1.0.0,HJI5SmLm7@4.0.18,HJOygqNo_sZX@7.2.2,HJbZqVodjZX@4.3.0,Hk9Lx5VoOoWQ@4.2.0,HkJjj2yqP@1.0.0,Hlts1i6UQ@1.0.1,IA4SWi27g@1.0.0,Jy6PlrM3@2.3.3,Kek6HqLTp@1.0.0,KjGuCO5fR@1.0.0,LFB7KaXwd@2.1.0,LNxiCu4IM@2.1.1,LXHJg4kRq@1.0.0,LykAT-gy@3.4.6,LzUarVPjg@1.0.0,MHGrt2O9A@2.1.0,N13fTqTBN@1.0.0,O3JScppCm@1.0.2,P7XVa18qr@2.0.4,Pn4vEbJH9@1.0.0,Q0YiY5jUZP7joe@1.0.0,QTcTY-c6q1ZkgX@1.0.0,QdbgFythI@1.0.1,QmkqgbGhi@1.1.4,R9wIGhJhM@2.1.0,RkzHS-jLm@2.0.1,Rl5Afmh9a@2.1.0,S1Qe-Pn54@4.2.1,S1_9Vsuj-Q@15.8.28,S1kgcNo_j-m@6.6.14,S1pcEj_jZX@21.10.10,SyUQ54odobQ@6.4.6,SyaxeqEi_oWX@4.1.0,Syg-54jdiZX@9.5.0,Tg0UMMlXn@1.0.0,TxfLuXDLv@1.0.0,UekC8ye4S@13.10.10,V0HX9cPeQ@4.2.1,V3wuPTpCz@2.1.0,W-Ep9eMuA@1.0.0,W09lB6TLwgAm0R@1.0.0,W0wzTGeX_@1.0.0,W5WeAt85L@1.0.51,WJdT8GMXV@1.0.16,WrGHcfNwy@2.1.0,XYQZBUojc@9.6.4,Y8bSDnAVX@1.0.0,YbH2KLexG@1.0.16,Z0TcXjY0P@1.3.7,Z1kX6W6_O@5.3.3,ZWsWsfOWx@1.0.0,Z_Opm-uL-@1.0.0,_zVOsAeiE@2.1.0,aDbGF8BGv@1.0.0,apGP5d1vF@1.0.0,bZv7Ew5Wb@1.0.0,d_5HNF7Yc@9.1.4,diHQHT2cJ@1.0.1,droLLWFH0@1.0.0,dyHOCwp5Y@1.0.5,eNNAqLlq-@1.0.0,eZcGJUfqZ@1.0.0,fgm_7QFft@1.0.0,gCp_X0eGz7MEw4@1.0.0,gHY2exdu@5.3.3,gIaHug97S@1.0.0,hpfYG4q4P@2.1.0,j31lIl5Xp@2.1.0,jD5L7x2k7@1.0.0,jiAuavhl1eE_a4@1.0.0,jzMEq56vW@1.4.3,k4en3lAF3@1.0.0,k8wVXZggIVKjVF@1.0.0,kY2jC6sFp@2.1.0,kbmJpLAUf@2.1.1,ko1w5PpFl@23.12.22,m9SYQUNXe@1.0.0,mCKT4oRIh@1.0.58,mH3PI4z5gsBwUc@1.0.0,mIksTJp55@2.1.0,mbZSCBMEy@2.1.0,mrqy4ru8ChyH0_@1.0.0,nF8utBoMZ@1.0.0,nhLMP6qX@2.1.3,p7TQJpfGc@2.1.0,pWv4ozUVB@1.0.58,qkMgGJxeV@2.1.0,r1EWc4iuj-X@9.5.10,r5-Z_erQ0@6.2.3,rAffn6LrC@1.0.45,rJMsqEj_iZQ@14.6.8,rkqVqNoOib7@4.2.0,s2NmgIZR@2.0.1,s8nQgU9A5@5.1.3,tMw5iWQZ9@1.0.0,tavJ1OKSj@2.2.2,tnfBi7gwe@15.4.3,twMyStLkn@15.9.15,uJzNEl6Sr@1.0.0,v5qsHjm64@1.0.16,vFJX03YEz@5.1.2,vOiVkAEPQ@1.0.1,w9RyVSEAG@1.0.0,wuZDXU1-P@1.0.0,yui8ye1r0@2.1.0,zHPuHon9t@1.0.0,zOADr5mUO@1.0.16,zXzeio7tQ@2.1.0,zpjqzQgar@2.1.0,zqWojrT0P@15.7.11,ztvSJZUt2@2.1.15",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 39978,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=GetMeState\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255ebb3812b45628017ee6c7f36f0b88a94e9778b9f11ad8a6fc05849182c07ec%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 239,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=HeroLaneResumePositionsWithToken\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22blockId%22%3A%22997965%3A73f319d1cc258348b6e6cb5a60901c4c%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2225ebef64cec9f5df369ad5cea0bb204aeaa9444e4ced4580b5cf4187784619da%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2607,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LandingBlocks\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22ids%22%3A%5B%22997965%3A0f9a8e821e796a1c2830bae57ebfe56c%22%2C%22997965%3Af9589d4800b07e0fe0af835439d251bb%22%5D%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 76344,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "joyn-user-state": "code=A_A",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LandingBlocks\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22ids%22%3A%5B%22997965%3A3eaacdd79365ace51504865be039f77e%22%2C%22997965%3A94ff59e3dd1d6d8473e22872c71d9f3d%22%5D%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 38858,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "joyn-user-state": "code=A_A",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LandingBlocks\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22ids%22%3A%5B%22997965%3A7c1bcc34b244a106b864ee99bd19a80c%22%2C%22997965%3A44c4fae2a47ecc995a5a59856fbf6fc2%22%5D%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 51576,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "joyn-user-state": "code=A_A",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LandingBlocks\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22ids%22%3A%5B%22997965%3Af1f86851961cdfe96e62147c911546f6%22%2C%22997965%3A75fb85c81799f61385c21a7a522e789d%22%5D%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 20026,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "joyn-user-state": "code=A_A",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LandingPageClient\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22path%22%3A%22%2Fneu-beliebt%22%2C%22variation%22%3A%22Default%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d126aa8da9aae9a7abdabe014e8641ce54c17fd0a39c37f8a7bbcab258821508%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 130843,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=LiveLane\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22blockId%22%3A%22997965%3Ad549f8e840e955aa509217557d801872%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2251659c62d4e4a6628d1e512190a3b0659486478b12be494875bef5a83dcb79ed%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 20453,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "joyn-user-state": "code=A_A",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=Navigation\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22818622ff5afe143664241034ba0c537650ec9a2eeae4d568830b47d8de605b7e%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 97187,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=ResumeLaneWithToken\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22blockId%22%3A%22997965%3Adbbfedc3b4c93ba357cb7c153fc8c369%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228795acc1fe7e6183e5a81f51a7a38b07fad9f60d3018f0db70b4ba72a49aec0d%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 138,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=WatchNext\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22assetId%22%3A%22b_pot8mrzpvqi%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 616,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=WatchNext\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22assetId%22%3A%22b_pvfrsrzeua3%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 600,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=WatchNext\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22assetId%22%3A%22d_pr76gic6n9z%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 662,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.joyn.de/graphql?operationName=WatchNext\u0026enable_user_location=true\u0026watch_assistant_variant=true\u0026variables=%7B%22assetId%22%3A%22d_pvhli0m26vg%22%7D\u0026extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 620,
+      "headers": {
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "content-type": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0",
+        "x-api-key": "4f0fd9f18abbe3cf0e87fdb556bc39c8"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/gvl/v3/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "xhr",
+      "size": 9558,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/gvl/v3/en.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 94158,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/settings/GXjugz_sV/latest/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 12719,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/settings/GXjugz_sV/latest/languages.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 73,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/tcfac/acp.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 13630,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://api.usercentrics.eu/translations/translations-de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 4445,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://app.launchdarkly.com/sdk/evalx/60f7f0b6cc384b0d698f1786/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwibmFtZSI6ImQxYTllZTM5LTNjN2MtNDE1OS05ZmE4LWZlMmY1Y2ZkN2YwMyIsImtleSI6ImQxYTllZTM5LTNjN2MtNDE1OS05ZmE4LWZlMmY1Y2ZkN2YwMyJ9LCJnaXQtcmVmIjp7ImtpbmQiOiJnaXQtcmVmIiwibmFtZSI6Im1haW4iLCJrZXkiOiJtYWluIn0sInRlbmFudC1pZCI6eyJraW5kIjoidGVuYW50LWlkIiwibmFtZSI6IkpPWU5fREVfSk9ZTiIsImtleSI6IkpPWU5fREVfSk9ZTiJ9LCJhcHBsaWNhdGlvbi1pZCI6eyJraW5kIjoiYXBwbGljYXRpb24taWQiLCJuYW1lIjoiSk9ZTl9ERV9KT1lOIiwia2V5IjoiSk9ZTl9ERV9KT1lOIn19",
+      "method": "GET",
+      "status": 200,
+      "type": "xhr",
+      "size": 913,
+      "headers": {
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://app.launchdarkly.com/sdk/evalx/60f7f0b6cc384b0d698f1786/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwibmFtZSI6ImQxYTllZTM5LTNjN2MtNDE1OS05ZmE4LWZlMmY1Y2ZkN2YwMyIsImtleSI6ImQxYTllZTM5LTNjN2MtNDE1OS05ZmE4LWZlMmY1Y2ZkN2YwMyJ9LCJnaXQtcmVmIjp7ImtpbmQiOiJnaXQtcmVmIiwibmFtZSI6Im1haW4iLCJrZXkiOiJtYWluIn0sInRlbmFudC1pZCI6eyJraW5kIjoidGVuYW50LWlkIiwibmFtZSI6IkpPWU5fREVfSk9ZTiIsImtleSI6IkpPWU5fREVfSk9ZTiJ9LCJhcHBsaWNhdGlvbi1pZCI6eyJraW5kIjoiYXBwbGljYXRpb24taWQiLCJuYW1lIjoiSk9ZTl9ERV9KT1lOIiwia2V5IjoiSk9ZTl9ERV9KT1lOIn19",
+      "method": "GET",
+      "status": 200,
+      "type": "xhr",
+      "size": 913,
+      "headers": {
+        "referer": "",
+        "x-launchdarkly-wrapper": "react-client-sdk/3.8.1",
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://auth.joyn.de/auth/anonymous",
+      "method": "POST",
+      "status": 200,
+      "type": "fetch",
+      "size": 1587,
+      "headers": {
+        "joyn-request-id": "f007a339-7c3d-40d9-8bad-240b017ee243",
+        "joyn-country": "DE",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+        "accept": "application/json",
+        "referer": "",
+        "joyn-distribution-tenant": "JOYN",
+        "joyn-platform": "web",
+        "joyn-client-version": "5.1370.0"
+      }
+    },
+    {
+      "url": "https://cmp.p7s1.io/i18n/tcf22/joyn-web.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 20223,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://cmp.p7s1.io/i18n/uc/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 3344,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://cmp.p7s1.io/i18n/uc/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 3344,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://consent-api.service.consent.usercentrics.eu/consent/uw/3",
+      "method": "POST",
+      "status": 201,
+      "type": "fetch",
+      "size": 0,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "accept": "application/json",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "x-request-id": "45c5d88d-12bc-42dd-b378-32bd154a3a29",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v1/action_happened",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v1/action_happened",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v1/action_happened",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v1/action_happened",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v1/application_opened",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://event-collector.prd.data.s.joyn.de/v2/screen_viewed",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImEwZDQwYjkxZTA2OGEzY2ZhODQ1ZjRkZTViNmY3NjA2NmEzMzc3NTEifQ.eyJqSWQiOiJERVBSRUNBVEVEIiwiaklkQyI6IkpOQUEtMzI2MWY5NmEtMGQ0My01MmM2LWFkZjItMGE1NWIxN2QyNDQyIiwicElkQyI6IkRFUFJFQ0FURUQiLCJjSWQiOiJkMWE5ZWUzOS0zYzdjLTQxNTktOWZhOC1mZTJmNWNmZDdmMDMiLCJkaXN0cmlidXRpb25fdGVuYW50IjoiSk9ZTiIsImlhdCI6MTc2NjQyOTQ4NiwiZXhwIjoxNzY2NTE1ODg2LCJhdWQiOlsid2ViIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5qb3luLmRlIiwic3ViIjoiOTRhZjE0M2ItMGU4MC00ZDRjLThjNTAtMmNkYTc3NTk0Y2JhIn0.4AeHnJM11G3jS7Z9acLCnQDOwF7mRMvCBpAMMS5NAQwz3nV1dPKKUXMa8rwjcuKh2Wb6aKLk1J2QHpchkajgx74ewazjCqBijmH1TI9zllvRgLXu1pPTgeakprra1b1EE1o6RFj_trRsjB77hqf2tfkV0_oxVFMqwe_TG8Yay8AGakbwWYCdcRbOJIJ_EPmpXENADd_xn__YzJ6CU-j-JYCO4PQdR9PZ2zNEkKJn-LHo3sIpL8Xd2bV6apiWs6SSNTCTiwadxMtIRRMnNzhydgCCFe97Ls7kRaahYizlzl5jN7Wey04sjFTXnn-VFJpJJ_wcRji4gVqhMP2rzhUaahNtrzB3L9HnwaR0Hbad8TK3mb-zUO5amxaAoFWCmy7jwG9iug5Z6vGLcAwycWDK11HNP6kC8tp44pHU5i0X5g_QMmO7039xagEzx3Iob5cWsKdrNwUm1DauS1pBa_2exRcjQfKpNreyDuOmNmPXx8jMeEqMnj5V4-eKCmnvp6oyyJl9EtQGwbOJy9AyD9pjmszEAP-9JTAKW5AtFe6N3KCUDZ0EuWvn4JHqJJFZWT1EG8TS6TWGrc3hhmsYBZDDqWRe4TX_7ZUynAMtKmlIhYELJPHmwlUfAsjeE0EOEeoZEtg_Hrsz7IOPh4w6kqf8jiXUd4kntXRNvJrczgbJaQ4",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "x-launchdarkly-payload-id": "390108c0-df67-11f0-b794-7fc633320a67",
+        "x-launchdarkly-event-schema": "4",
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "x-launchdarkly-payload-id": "390108c0-df67-11f0-b794-7fc633320a67",
+        "x-launchdarkly-event-schema": "4",
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "x-launchdarkly-payload-id": "391a8430-df67-11f0-b794-7fc633320a67",
+        "x-launchdarkly-wrapper": "react-client-sdk/3.8.1",
+        "x-launchdarkly-event-schema": "4",
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786",
+      "method": "POST",
+      "status": 0,
+      "type": "xhr",
+      "size": 0,
+      "headers": {
+        "referer": "",
+        "x-launchdarkly-payload-id": "391a8430-df67-11f0-b794-7fc633320a67",
+        "x-launchdarkly-wrapper": "react-client-sdk/3.8.1",
+        "x-launchdarkly-event-schema": "4",
+        "x-launchdarkly-user-agent": "JSClient/3.8.1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/json"
+      }
+    },
+    {
+      "url": "https://geo.privacymanager.io/",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 28,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://local.adguard.org/adguard-ajax-api/api?type=gm-xml-http-request\u0026unique_name=Web%20of%20Trust\u0026url=https%3A%2F%2Frating.adguard.com%2F0.4%2Fpublic_link_json2%3Fhosts%3Dapp.usercentrics.eu%2F%26key%3D04a3aa04ef92d65637d0633eb495e82ad648508e\u0026data=\u0026headers=\u0026method=GET\u0026overridemimetype=\u0026user=\u0026password=\u0026sn=36bcef522663073ad9f675049f79d858663b1c20e30f764df55b42452835e014\u0026ust=5f050b5d-f205-4771-9509-37b8d1c27a67",
+      "method": "GET",
+      "status": 200,
+      "type": "xhr",
+      "size": 62,
+      "headers": {
+        "referer": "https://app.usercentrics.eu/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://privacy-proxy.usercentrics.eu/latest/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 914,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://privacy-proxy.usercentrics.eu/latest/de.json",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 914,
+      "headers": {
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/collection/im-tv-verpasst%3F?id=997965:f9589d4800b07e0fe0af835439d251bb\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/collection/joyn-originals?id=997965:3eaacdd79365ace51504865be039f77e\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/collection/schon-vor-tv-ausstrahlung?id=997965:7c1bcc34b244a106b864ee99bd19a80c\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/collection/weihnachtszeit%2C-sch%C3%B6nste-zeit?id=997965:872a960428d55027c1c773f204673856\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/filme/dear-santa-eine-reise-zum-nordpol?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=1\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=115\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=123\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=165\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=2\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/play/live-tv?channel_id=3\u0026from=%2F\u0026_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 2,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/reality?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 60866,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/chained?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 37421,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/dream-kitchen?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 67500,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/forsthaus-rampensau-germany?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 159169,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/lambro-diaries-gumball-3000-edition?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 42865,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/last-soul-the-documentary?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 35356,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/mission-restaurant?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 25383,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/survival-squad?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 61585,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/tierbruecke?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 30708,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/serien/wir-sind-die-burnetts?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 60624,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    },
+    {
+      "url": "https://www.joyn.de/sport?_rsc=hylwc",
+      "method": "GET",
+      "status": 200,
+      "type": "fetch",
+      "size": 17459,
+      "headers": {
+        "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%22cms%22%2C%7B%22children%22%3A%5B%5B%22pathname%22%2C%22neu-und-beliebt%22%2C%22c%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
+        "referer": "https://www.joyn.de/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "next-url": "/cms/neu-und-beliebt",
+        "rsc": "1"
+      }
+    }
+  ]
+}
+[19:51:37 INF] Page inspection completed successfully

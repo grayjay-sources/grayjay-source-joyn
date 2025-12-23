@@ -42,4 +42,3 @@ jobs:
           git config user.email "actions@github.com"
           git add build/
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Update build output [skip ci]" && git push)
-

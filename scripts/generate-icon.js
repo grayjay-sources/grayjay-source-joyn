@@ -22,4 +22,3 @@ async function generateIcon() {
 }
 
 generateIcon().catch(console.error);
-

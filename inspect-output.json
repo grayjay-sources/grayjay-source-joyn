@@ -1,0 +1,415 @@
+[19:42:44 INF] jayjay v3.1.0
+[19:42:44 INF] Starting page inspection...
+[19:42:44 INF] 
+Inspecting page: https://www.joyn.de
+[19:42:44 INF] Timeout: 30000ms
+[19:42:44 INF] Wait time: 3000ms
+[19:42:44 INF] Output format: table
+[19:42:44 INF] Headless: True
+[19:42:44 INF] Viewport: 1920x1080
+[19:42:44 INF] Wait until: networkidle
+[19:42:44 INF] Auto-scroll: True
+[19:42:44 INF] Initializing browser...
+[19:42:54 INF] Loading page: https://www.joyn.de
+[19:43:00 INF] Page loaded in 5766ms
+[19:43:00 INF] Waiting 3000ms for additional network activity...
+[19:43:03 INF] Auto-scrolling page to trigger lazy loading...
+[19:43:10 INF] Captured 311 network requests
+[19:43:16 INF] 
+=== Page Inspection Results ===
+[19:43:16 INF] URL: https://www.joyn.de
+[19:43:16 INF] Title: Joyn - Serien, Filme, Sport & Live TV jederzeit streamen
+[19:43:16 INF] Load time: 5766ms
+[19:43:16 INF] Total requests found: 311
+[19:43:16 INF] 
+REQUEST SUMMARY:
+[19:43:16 INF] ==================
+[19:43:16 INF] document       : 2 requests
+[19:43:16 INF] fetch          : 46 requests
+[19:43:16 INF] font           : 2 requests
+[19:43:16 INF] image          : 170 requests
+[19:43:16 INF] script         : 56 requests
+[19:43:16 INF] stylesheet     : 20 requests
+[19:43:16 INF] xhr            : 15 requests
+[19:43:16 INF] 
+CATEGORIZED INTERESTING REQUESTS:
+[19:43:16 INF] ====================================
+[19:43:16 INF] 
+API REQUESTS:
+[19:43:16 INF]   1. GET https://ab-testing.prd.data.s.joyn.de/api/v1/experiments/users/97929e00-d9ce-41db-8ab0-4c02727b1214?platform=web&requester=web_client&distribution_tenant=JOYN
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]   2. GET https://api.joyn.de/graphql?operationName=GetMeState&enable_user_location=true&watch_assistant_variant=true&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255ebb3812b45628017ee6c7f36f0b88a94e9778b9f11ad8a6fc05849182c07ec%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   3. GET https://api.joyn.de/graphql?operationName=HeroLaneResumePositionsWithToken&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3A73f319d1cc258348b6e6cb5a60901c4c%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2225ebef64cec9f5df369ad5cea0bb204aeaa9444e4ced4580b5cf4187784619da%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   4. GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A0f9a8e821e796a1c2830bae57ebfe56c%22%2C%22997965%3Af9589d4800b07e0fe0af835439d251bb%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   5. GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A3eaacdd79365ace51504865be039f77e%22%2C%22997965%3A94ff59e3dd1d6d8473e22872c71d9f3d%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   6. GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A7c1bcc34b244a106b864ee99bd19a80c%22%2C%22997965%3A44c4fae2a47ecc995a5a59856fbf6fc2%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   7. GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3Af1f86851961cdfe96e62147c911546f6%22%2C%22997965%3A75fb85c81799f61385c21a7a522e789d%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   8. GET https://api.joyn.de/graphql?operationName=LandingPageClient&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22path%22%3A%22%2Fneu-beliebt%22%2C%22variation%22%3A%22Default%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d126aa8da9aae9a7abdabe014e8641ce54c17fd0a39c37f8a7bbcab258821508%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   9. GET https://api.joyn.de/graphql?operationName=LiveLane&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3Ad549f8e840e955aa509217557d801872%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2251659c62d4e4a6628d1e512190a3b0659486478b12be494875bef5a83dcb79ed%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   10. GET https://api.joyn.de/graphql?operationName=Navigation&enable_user_location=true&watch_assistant_variant=true&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22818622ff5afe143664241034ba0c537650ec9a2eeae4d568830b47d8de605b7e%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   11. GET https://api.joyn.de/graphql?operationName=ResumeLaneWithToken&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3Adbbfedc3b4c93ba357cb7c153fc8c369%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228795acc1fe7e6183e5a81f51a7a38b07fad9f60d3018f0db70b4ba72a49aec0d%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   12. GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%221880966%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   13. GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22b_pot8mrzpvqi%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   14. GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22b_pvfrsrzeua3%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   15. GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22d_pr76gic6n9z%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   16. GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22d_pvhli0m26vg%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF]      Type: fetch
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   17. POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF]      Type: xhr
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   18. POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF]      Type: xhr
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   19. POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF]      Type: xhr
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   20. POST https://event-collector.prd.data.s.joyn.de/v1/application_opened
+[19:43:16 INF]      Type: xhr
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF]   21. POST https://event-collector.prd.data.s.joyn.de/v2/screen_viewed
+[19:43:16 INF]      Type: xhr
+[19:43:16 INF]      Content-Type: application/json
+[19:43:16 INF] 
+ALL REQUESTS:
+[19:43:16 INF] ================
+[19:43:16 INF] 1. [FETCH] GET https://ab-testing.prd.data.s.joyn.de/api/v1/experiments/users/97929e00-d9ce-41db-8ab0-4c02727b1214?platform=web&requester=web_client&distribution_tenant=JOYN
+[19:43:16 INF] 2. [FETCH] GET https://aggregator.service.usercentrics.eu/aggregate/de?templates=-Gj2r8bd6@1.0.7,-KZPzxAsf@1.0.16,01qALHvhD@1.0.0,13v5rUCXc@1.0.0,1A7kdSDFhK3U1f@1.0.0,1ba4yQk0W@4.1.2,1xpTEWY44@1.0.0,2Bjp0et1p@1.0.0,2IcSrIxD8@1.0.1,2RKzr0kG8@1.0.0,3d_zXyiF3@1.0.0,458ZXOCa7@1.0.0,4NIAkZsNE@2.2.0,4ltiKspwp@1.0.0,5-03wbc0am4zim@1.1.0,5FP9tjYNG@1.0.0,64sqiCjqt@1.0.0,6PEQM-sZb@2.1.15,7M0cXS2pQ@10.7.3,7jBdshciY@1.0.0,7tNwk5fZ9@1.1.2,87JYasXPF@1.5.13,8haTzpme2@2.1.0,9Q2qrmB3@7.4.12,9_mINmsAo@1.0.0,AMItrBs0R@1.0.0,B1Hk_zoTX@18.3.21,BJ59EidsWQ@25.7.28,BJTzqNi_i-m@5.3.9,BJz7qNsdj-7@15.8.20,BkeKqEjuoZQ@9.4.12,BsXel8D_1mgvEY@1.0.0,BySu54sOjZQ@5.3.4,DG6-aLzBO@1.0.0,DHS2sEi4b@5.1.4,FY68QOwP5@1.1.0,FZ72hT8fW@2.1.0,F_T7R5yg6@1.0.0,HJI5SmLm7@4.0.18,HJOygqNo_sZX@7.2.2,HJbZqVodjZX@4.3.0,Hk9Lx5VoOoWQ@4.2.0,HkJjj2yqP@1.0.0,Hlts1i6UQ@1.0.1,IA4SWi27g@1.0.0,Jy6PlrM3@2.3.3,Kek6HqLTp@1.0.0,KjGuCO5fR@1.0.0,LFB7KaXwd@2.1.0,LNxiCu4IM@2.1.1,LXHJg4kRq@1.0.0,LykAT-gy@3.4.6,LzUarVPjg@1.0.0,MHGrt2O9A@2.1.0,N13fTqTBN@1.0.0,O3JScppCm@1.0.2,P7XVa18qr@2.0.4,Pn4vEbJH9@1.0.0,Q0YiY5jUZP7joe@1.0.0,QTcTY-c6q1ZkgX@1.0.0,QdbgFythI@1.0.1,QmkqgbGhi@1.1.4,R9wIGhJhM@2.1.0,RkzHS-jLm@2.0.1,Rl5Afmh9a@2.1.0,S1Qe-Pn54@4.2.1,S1_9Vsuj-Q@15.8.28,S1kgcNo_j-m@6.6.14,S1pcEj_jZX@21.10.10,SyUQ54odobQ@6.4.6,SyaxeqEi_oWX@4.1.0,Syg-54jdiZX@9.5.0,Tg0UMMlXn@1.0.0,TxfLuXDLv@1.0.0,UekC8ye4S@13.10.10,V0HX9cPeQ@4.2.1,V3wuPTpCz@2.1.0,W-Ep9eMuA@1.0.0,W09lB6TLwgAm0R@1.0.0,W0wzTGeX_@1.0.0,W5WeAt85L@1.0.51,WJdT8GMXV@1.0.16,WrGHcfNwy@2.1.0,XYQZBUojc@9.6.4,Y8bSDnAVX@1.0.0,YbH2KLexG@1.0.16,Z0TcXjY0P@1.3.7,Z1kX6W6_O@5.3.3,ZWsWsfOWx@1.0.0,Z_Opm-uL-@1.0.0,_zVOsAeiE@2.1.0,aDbGF8BGv@1.0.0,apGP5d1vF@1.0.0,bZv7Ew5Wb@1.0.0,d_5HNF7Yc@9.1.4,diHQHT2cJ@1.0.1,droLLWFH0@1.0.0,dyHOCwp5Y@1.0.5,eNNAqLlq-@1.0.0,eZcGJUfqZ@1.0.0,fgm_7QFft@1.0.0,gCp_X0eGz7MEw4@1.0.0,gHY2exdu@5.3.3,gIaHug97S@1.0.0,hpfYG4q4P@2.1.0,j31lIl5Xp@2.1.0,jD5L7x2k7@1.0.0,jiAuavhl1eE_a4@1.0.0,jzMEq56vW@1.4.3,k4en3lAF3@1.0.0,k8wVXZggIVKjVF@1.0.0,kY2jC6sFp@2.1.0,kbmJpLAUf@2.1.1,ko1w5PpFl@23.12.22,m9SYQUNXe@1.0.0,mCKT4oRIh@1.0.58,mH3PI4z5gsBwUc@1.0.0,mIksTJp55@2.1.0,mbZSCBMEy@2.1.0,mrqy4ru8ChyH0_@1.0.0,nF8utBoMZ@1.0.0,nhLMP6qX@2.1.3,p7TQJpfGc@2.1.0,pWv4ozUVB@1.0.58,qkMgGJxeV@2.1.0,r1EWc4iuj-X@9.5.10,r5-Z_erQ0@6.2.3,rAffn6LrC@1.0.45,rJMsqEj_iZQ@14.6.8,rkqVqNoOib7@4.2.0,s2NmgIZR@2.0.1,s8nQgU9A5@5.1.3,tMw5iWQZ9@1.0.0,tavJ1OKSj@2.2.2,tnfBi7gwe@15.4.3,twMyStLkn@15.9.15,uJzNEl6Sr@1.0.0,v5qsHjm64@1.0.16,vFJX03YEz@5.1.2,vOiVkAEPQ@1.0.1,w9RyVSEAG@1.0.0,wuZDXU1-P@1.0.0,yui8ye1r0@2.1.0,zHPuHon9t@1.0.0,zOADr5mUO@1.0.16,zXzeio7tQ@2.1.0,zpjqzQgar@2.1.0,zqWojrT0P@15.7.11,ztvSJZUt2@2.1.15
+[19:43:16 INF] 3. [FETCH] GET https://api.joyn.de/graphql?operationName=GetMeState&enable_user_location=true&watch_assistant_variant=true&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255ebb3812b45628017ee6c7f36f0b88a94e9778b9f11ad8a6fc05849182c07ec%22%7D%7D
+[19:43:16 INF] 4. [FETCH] GET https://api.joyn.de/graphql?operationName=HeroLaneResumePositionsWithToken&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3A73f319d1cc258348b6e6cb5a60901c4c%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2225ebef64cec9f5df369ad5cea0bb204aeaa9444e4ced4580b5cf4187784619da%22%7D%7D
+[19:43:16 INF] 5. [FETCH] GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A0f9a8e821e796a1c2830bae57ebfe56c%22%2C%22997965%3Af9589d4800b07e0fe0af835439d251bb%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF] 6. [FETCH] GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A3eaacdd79365ace51504865be039f77e%22%2C%22997965%3A94ff59e3dd1d6d8473e22872c71d9f3d%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF] 7. [FETCH] GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3A7c1bcc34b244a106b864ee99bd19a80c%22%2C%22997965%3A44c4fae2a47ecc995a5a59856fbf6fc2%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF] 8. [FETCH] GET https://api.joyn.de/graphql?operationName=LandingBlocks&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22ids%22%3A%5B%22997965%3Af1f86851961cdfe96e62147c911546f6%22%2C%22997965%3A75fb85c81799f61385c21a7a522e789d%22%5D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f58e2f338ac69ea879e2b3bc7ba6ef4329a8820b77f5af36fdcc4ebda2132871%22%7D%7D
+[19:43:16 INF] 9. [FETCH] GET https://api.joyn.de/graphql?operationName=LandingPageClient&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22path%22%3A%22%2Fneu-beliebt%22%2C%22variation%22%3A%22Default%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d126aa8da9aae9a7abdabe014e8641ce54c17fd0a39c37f8a7bbcab258821508%22%7D%7D
+[19:43:16 INF] 10. [FETCH] GET https://api.joyn.de/graphql?operationName=LiveLane&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3Ad549f8e840e955aa509217557d801872%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2251659c62d4e4a6628d1e512190a3b0659486478b12be494875bef5a83dcb79ed%22%7D%7D
+[19:43:16 INF] 11. [FETCH] GET https://api.joyn.de/graphql?operationName=Navigation&enable_user_location=true&watch_assistant_variant=true&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22818622ff5afe143664241034ba0c537650ec9a2eeae4d568830b47d8de605b7e%22%7D%7D
+[19:43:16 INF] 12. [FETCH] GET https://api.joyn.de/graphql?operationName=ResumeLaneWithToken&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22blockId%22%3A%22997965%3Adbbfedc3b4c93ba357cb7c153fc8c369%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%228795acc1fe7e6183e5a81f51a7a38b07fad9f60d3018f0db70b4ba72a49aec0d%22%7D%7D
+[19:43:16 INF] 13. [FETCH] GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%221880966%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF] 14. [FETCH] GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22b_pot8mrzpvqi%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF] 15. [FETCH] GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22b_pvfrsrzeua3%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF] 16. [FETCH] GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22d_pr76gic6n9z%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF] 17. [FETCH] GET https://api.joyn.de/graphql?operationName=WatchNext&enable_user_location=true&watch_assistant_variant=true&variables=%7B%22assetId%22%3A%22d_pvhli0m26vg%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22612df80aa81fb95da88eb90588db3051052e6ed6248c4cd129ca21bc265aabf6%22%7D%7D
+[19:43:16 INF] 18. [FETCH] GET https://api.usercentrics.eu/settings/GXjugz_sV/latest/de.json
+[19:43:16 INF] 19. [FETCH] GET https://api.usercentrics.eu/settings/GXjugz_sV/latest/languages.json
+[19:43:16 INF] 20. [FETCH] GET https://api.usercentrics.eu/tcfac/acp.json
+[19:43:16 INF] 21. [FETCH] GET https://api.usercentrics.eu/translations/translations-de.json
+[19:43:16 INF] 22. [XHR] GET https://app.launchdarkly.com/sdk/evalx/60f7f0b6cc384b0d698f1786/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwibmFtZSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCIsImtleSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCJ9LCJnaXQtcmVmIjp7ImtpbmQiOiJnaXQtcmVmIiwibmFtZSI6Im1haW4iLCJrZXkiOiJtYWluIn0sInRlbmFudC1pZCI6eyJraW5kIjoidGVuYW50LWlkIiwibmFtZSI6IkpPWU5fREVfSk9ZTiIsImtleSI6IkpPWU5fREVfSk9ZTiJ9LCJhcHBsaWNhdGlvbi1pZCI6eyJraW5kIjoiYXBwbGljYXRpb24taWQiLCJuYW1lIjoiSk9ZTl9ERV9KT1lOIiwia2V5IjoiSk9ZTl9ERV9KT1lOIn19
+[19:43:16 INF] 23. [XHR] GET https://app.launchdarkly.com/sdk/evalx/60f7f0b6cc384b0d698f1786/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwibmFtZSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCIsImtleSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCJ9LCJnaXQtcmVmIjp7ImtpbmQiOiJnaXQtcmVmIiwibmFtZSI6Im1haW4iLCJrZXkiOiJtYWluIn0sInRlbmFudC1pZCI6eyJraW5kIjoidGVuYW50LWlkIiwibmFtZSI6IkpPWU5fREVfSk9ZTiIsImtleSI6IkpPWU5fREVfSk9ZTiJ9LCJhcHBsaWNhdGlvbi1pZCI6eyJraW5kIjoiYXBwbGljYXRpb24taWQiLCJuYW1lIjoiSk9ZTl9ERV9KT1lOIiwia2V5IjoiSk9ZTl9ERV9KT1lOIn19
+[19:43:16 INF] 24. [XHR] GET https://app.launchdarkly.com/sdk/evalx/60f7f0b6cc384b0d698f1786/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwibmFtZSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCIsImtleSI6Ijk3OTI5ZTAwLWQ5Y2UtNDFkYi04YWIwLTRjMDI3MjdiMTIxNCJ9LCJnaXQtcmVmIjp7ImtpbmQiOiJnaXQtcmVmIiwibmFtZSI6Im1haW4iLCJrZXkiOiJtYWluIn0sInRlbmFudC1pZCI6eyJraW5kIjoidGVuYW50LWlkIiwibmFtZSI6IkpPWU5fREVfSk9ZTiIsImtleSI6IkpPWU5fREVfSk9ZTiJ9LCJhcHBsaWNhdGlvbi1pZCI6eyJraW5kIjoiYXBwbGljYXRpb24taWQiLCJuYW1lIjoiSk9ZTl9ERV9KT1lOIiwia2V5IjoiSk9ZTl9ERV9KT1lOIn19
+[19:43:16 INF] 25. [DOCUMENT] GET https://app.usercentrics.eu/browser-sdk/4.39.0/cross-domain-bridge.html
+[19:43:16 INF] 26. [IMAGE] GET https://app.usercentrics.eu/session/1px.png?settingsId=GXjugz_sV
+[19:43:16 INF] 27. [FETCH] POST https://auth.joyn.de/auth/anonymous
+[19:43:16 INF] 28. [FETCH] GET https://cmp.p7s1.io/i18n/tcf22/joyn-web.json
+[19:43:16 INF] 29. [SCRIPT] GET https://datalayer.p7s1.io/8edc26051aa2b8e6eef5646d623f9d51.js
+[19:43:16 INF] 30. [XHR] POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF] 31. [XHR] POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF] 32. [XHR] POST https://event-collector.prd.data.s.joyn.de/v1/action_happened
+[19:43:16 INF] 33. [XHR] POST https://event-collector.prd.data.s.joyn.de/v1/application_opened
+[19:43:16 INF] 34. [XHR] POST https://event-collector.prd.data.s.joyn.de/v2/screen_viewed
+[19:43:16 INF] 35. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 36. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 37. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 38. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 39. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 40. [XHR] POST https://events.launchdarkly.com/events/bulk/60f7f0b6cc384b0d698f1786
+[19:43:16 INF] 41. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/Comedy%2BCentral/brand-logo-white-vs1-comedy-central.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 42. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/dmax/brand-logo-color-dmax.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 43. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/hgtv/brand-logo-white-HGTV%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 44. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/Kabel%2Beins%2BDoku/brand-logo-white-kabel-eins-doku%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 45. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/Kabel%2Beins%2BDoku/brand-logo-white-kabel-eins-doku%2B%25281%2529.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 46. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/ProSieben%2BMAXX/brand-logo-white-P7MAXX%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 47. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/ProSieben%2BMAXX/brand-logo-white-P7MAXX%2B%25281%2529.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 48. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/SAT.1/brand-logo-white-sat-eins%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 49. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/SAT.1/brand-logo-white-sat-eins%2B%25281%2529.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 50. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/SAT.1%2BGold/brand-logo-white-v2-sat1-gold%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 51. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/Sport1/brand-logo-white-sport-1.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 52. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/Sport1/brand-logo-white-sport-1.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 53. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/TLC/brand-logo-white-TLC%2B%25282%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 54. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Brand/CMS/welt/brand-logo-welt-WELT.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 55. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/Anime/09_JOYN_THEMEN_KACHELN_anime_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 56. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/dating%2Bshows/02_JOYN_THEMEN_KACHELN_reality_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 57. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/Home%2BImprovement/18_JOYN_THEMEN_KACHELN_wohnen_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 58. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/horror%2Bgenre/11_JOYN_THEMEN_KACHELN_horror_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 59. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/kochen/08_JOYN_THEMEN_KACHELN_food_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 60. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/true%2Bcrime/13_JOYN_THEMEN_KACHELN_truecrime_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 61. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/AVOD/weihnachtszeit/primary-v2_1.png/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 62. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/SVOD/Anti-Weihnachtsfilme/Anti-Weihnachtsfilme-Collection_Joyn_Primary_onl.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 63. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/joyn/Shared/Collection%2BLane/SVOD/Valentinstag/15_JOYN_THEMEN_KACHELN_liebesfilme_dark_teal.jpg/profile:nextgen-web-primarycollection-351x351.webp
+[19:43:16 INF] 64. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Big%2BTeaser/Big%2BTeaser%2BFree%2BSport/DartsWintersport_BigTeaser_Herolandscape.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 65. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Big%2BTeaser/Big%2BTeaser%2BReality/ForsthausRampensauRealityBackpackersPeruLOGO_BigTeaser_Herolandscape.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 66. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/ARD-ZDF-Dritte/Das%2BErste/DasErste_wei%25C3%259F.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 67. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/ARD-ZDF-Dritte/ZDF/ZDF_Logo_white_big_rgb_3.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 68. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/atv-1/ATV_logo_2.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 69. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Crunchy%2BRoll/brand-logo-white-Crunchyroll.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 70. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Joyn/joyn-brand-logo.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 71. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Kabel%2BEins/brand-logo-white-Kabel-Eins.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 72. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Kabel%2BEins/brand-logo-white-Kabel-Eins.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 73. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/NBCUniversal/NBCUniversal%2B%25281%2529.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 74. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Nick/brand-logo-white-nickelodeon_1.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 75. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/ProSieben/white_1.png/profile:nextgen-web-brand-150x
+[19:43:16 INF] 76. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/ProSieben/white_1.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 77. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/ProSieben/white_1.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 78. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/sixx/white%2B%25281%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 79. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/sixx/white%2B%25281%2529.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 80. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Tele%2B5/white%2B%25286%2529_2.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 81. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Viacom/profile_original%2B%25282%2529.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 82. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Weihnachtskino/brand-logo-white-weihnachtskino.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 83. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/AVOD/Weihnachtskino/brand-logo-white-weihnachtskino.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 84. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/Studiobrands/Banijay/brand-logo-white-banijay-media-germany.png/profile:nextgen-web-brand-150x.webp
+[19:43:16 INF] 85. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Brand/CMS/Studiobrands/CBS/brand-logo-white-CBS.png/profile:nextgen-web-brand-50x.webp
+[19:43:16 INF] 86. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Live-TV/Factual/Galileo%2B-%2BLive-Teaser%2B-%2B01%2BMontag/Galileo_InsideGSG9_Joyn_Herolandscape_onl_2.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 87. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Live-TV/Factual/Galileo%2B-%2BLive-Teaser%2B-%2B01%2BMontag/Galileo_InsideGSG9_Joyn_Herolandscape_onl_2.jpg/profile:nextgen-web-herolandscapecut-1950x800.webp
+[19:43:16 INF] 88. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Live-TV/Factual/Galileo%2B-%2BLive-Teaser%2B-%2B01%2BMontag/Galileo_InsideGSG9_Joyn_Herolandscape_onl_2.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 89. [IMAGE] GET https://img.joyn.de/cms/var/assets/Content/Shared/Live-TV/Factual/Galileo%2B-%2BLive-Teaser%2B-%2B01%2BMontag/ingest%2Bart%2Blogo%2B%25281%2529.png/profile:original.webp
+[19:43:16 INF] 90. [IMAGE] GET https://img.joyn.de/cms/var/assets/SharedContent/Movies/Engel+sucht+Liebe/heroportrait-Engel-sucht-Liebe-1377433.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 91. [IMAGE] GET https://img.joyn.de/cms/var/assets/SharedContent/Movies/Tatsaechlich+...+Liebe/artlogo-tatsaechlich-liebe-103394.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 92. [IMAGE] GET https://img.joyn.de/cms/var/assets/SharedContent/Movies/Tatsaechlich+...+Liebe/heroportrait-.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 93. [IMAGE] GET https://img.joyn.de/cms/var/assets/SharedContent/Series/One+Piece/artLogoImage-bc1b32fab0caa7d3a7a7eb63.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 94. [IMAGE] GET https://img.joyn.de/gn/assets/p10838152_i_h9_al.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 95. [IMAGE] GET https://img.joyn.de/gn/assets/p11086554_i_h9_ag.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 96. [IMAGE] GET https://img.joyn.de/gn/assets/p28047087_i_h9_ab.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 97. [IMAGE] GET https://img.joyn.de/gn/assets/p31782832_e_h10_aa.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 98. [IMAGE] GET https://img.joyn.de/gn/assets/p31787716_e_h10_aa.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 99. [IMAGE] GET https://img.joyn.de/gn/assets/p3592113_i_h9_ae.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 100. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_0iwydmj18j47_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 101. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_0km0qn656hq8_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 102. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_0rt00cwcml38_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 103. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_1261vos22m45_heroLandscape.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 104. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_1261vos22m45_heroLandscape.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 105. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_1uk97e0lfolz_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 106. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_1yipbx2mf7l2_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 107. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_1zxbn6aotsna_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 108. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_22lwszyq9qes_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 109. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_2q35r6jvo73l_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 110. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_3iola430qzwt_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 111. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_4kkkwjz3lz11_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 112. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_4kl5j088avkc_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 113. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_4pwjygyr4to0_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 114. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_4u3kc3g4l8rz_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 115. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_5blknys7jigp_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 116. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_5tlj33iwpt91_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 117. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_67960xd1mtml_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 118. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_6l73kq2uo66z_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 119. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_6mq9qmasfjky_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 120. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_6s4ddzhl1j6w_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 121. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_7l346y1m72vr_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 122. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_7sya6b4imwul_artLogo.png/profile:original.webp
+[19:43:16 INF] 123. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_7wju9xv2wo9t_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 124. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_7wzuwpyvals3_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 125. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_8bullye2z9lu_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 126. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_8eatp20ul1mh_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 127. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_8xg3butvygif_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 128. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_8znq2rx90h54_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 129. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_b2lsa7928h5j_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 130. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_b5jyfjesg0ek_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 131. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_bb7sclhjo4ny_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 132. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_bxd53mg32xdr_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 133. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_cao6wzkjhnk0_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 134. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_cic16lgi29b7_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 135. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_d1bcn235m5lr_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 136. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_d48zvg7szzdd_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 137. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_dbofkp5sa0hw_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 138. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_edoszrhgmskp_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 139. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_eyt32edrdacn_artLogo.png/profile:original.webp
+[19:43:16 INF] 140. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_fx3s84yml80z_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 141. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_gcsar5e3s0w2_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 142. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ggepytcqm9ku_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 143. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_h6e6kz77qeqx_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 144. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_hl2rvbpsi3zd_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 145. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_i21kit0aw0uh_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 146. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ia30smev5slz_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 147. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_iiqdnkul439n_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 148. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ilmjlqfz4ali_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 149. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_imxg5dorvkre_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 150. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_iseuclohuj88_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 151. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ja2itsdmwj4i_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 152. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_jc9wk5nl6cma_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 153. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_jwns04cmksn6_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 154. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_jxqt8j0mtlvp_heroLandscape.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 155. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_jxqt8j0mtlvp_heroLandscape.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 156. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_k03550lp5kp9_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 157. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_kah18n8888ns_artLogo.png/profile:original.webp
+[19:43:16 INF] 158. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_khz81p9kp57l_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 159. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_kpy4qbrucm5u_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 160. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_kzrtu8o0psiw_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 161. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ldr65cgn39gy_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 162. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_liphe1i41l0z_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 163. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_lspg41z47p6p_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 164. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_mgef84pjvmew_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 165. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_n7nmx5kxotxz_heroLandscape.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 166. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_n7nmx5kxotxz_heroLandscape.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 167. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_nfiugk8a7e79_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 168. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_oaijo4nf9rl6_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 169. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ol2pyi8358ni_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 170. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_ozrmo1dhft5n_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 171. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_p0nmvmeya3ls_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 172. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_pl0mawd8c0oe_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 173. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_qp7vpsmksrgo_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 174. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_qpnbj9a8tux5_primary.jpg/profile:nextgen-web-primary-503x.webp
+[19:43:16 INF] 175. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_rmn0naye7foj_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 176. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_s1r2blma8cit_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 177. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_s43hpljjne14_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 178. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_s4djujl8hyrt_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 179. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_s7u28sf72py1_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 180. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_sdiiup5l2qwu_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 181. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_sfzqypd6y5pb_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 182. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_si670w77pze8_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 183. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_srt4m94ljy6j_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 184. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_st0sute9ukpj_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 185. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_t1ufm2cfthw8_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 186. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_t7n93xss97wn_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 187. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_td3ptb4ogpqu_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 188. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_tp5b4274u6ip_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 189. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_u9i16l3d37nr_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 190. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_uf38ocytfe18_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 191. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_v6santmu7ra8_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 192. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_v9ux27rzcmem_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 193. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_vyq8des4zqoe_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 194. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_whhk6l5fxbk9_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 195. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_wt593f6cyl6v_heroPortrait.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 196. [IMAGE] GET https://img.joyn.de/ing/originals/t-005/i_y8ajxq6fleqv_artLogo.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 197. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/artLogo-Als_der_Weihnachtsmann_vom_Himmel_fiel.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 198. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/artLogo-Dear_Santa_-_Eine_Reise_zum_Nordpol.png/profile:original.webp
+[19:43:16 INF] 199. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/artLogo-Die_Legende_der_Weihnachtshexe.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 200. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/heroLandscape-Dear_Santa_-_Eine_Reise_zum_Nordpol.jpg/profile:nextgen-web-herolandscape-1920x.webp
+[19:43:16 INF] 201. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/heroLandscape-Dear_Santa_-_Eine_Reise_zum_Nordpol.jpg/profile:nextgen-web-herolandscapecut-1950x800.webp
+[19:43:16 INF] 202. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/heroLandscape-Dear_Santa_-_Eine_Reise_zum_Nordpol.jpg/profile:nextgen-web-livestill-503x283.webp
+[19:43:16 INF] 203. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/heroPortrait-Als_der_Weihnachtsmann_vom_Himmel_fiel.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 204. [IMAGE] GET https://img.joyn.de/ing/originals/t-020/heroPortrait-Die_Legende_der_Weihnachtshexe.jpg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 205. [IMAGE] GET https://img.joyn.de/mas-prod/assets/d_p1aku0hahq9/ART_LOGO-8d7ec1c6.png/profile:nextgen-web-artlogo-210x86.webp
+[19:43:16 INF] 206. [IMAGE] GET https://img.joyn.de/mas-prod/assets/d_ppjo8kmotwd/HERO_PORTRAIT-8a8c171c.jpeg/profile:nextgen-web-heroportrait-243x365.webp
+[19:43:16 INF] 207. [SCRIPT] GET https://local.adguard.org/?ts=1766427910367&name=AdGuard%20Assistant&name=AdGuard%20Extra&name=AdGuard%20Popup%20Blocker&name=Web%20of%20Trust&type=user-script
+[19:43:16 INF] 208. [SCRIPT] GET https://local.adguard.org/?ts=1766427910367&type=content-script&dmn=app.usercentrics.eu&url=https%3A%2F%2Fapp.usercentrics.eu%2Fbrowser-sdk%2F4.39.0%2Fcross-domain-bridge.html&app=chrome.exe&css=3&js=1&rel=1&rji=1&sbe=1&stealth=1&st-loc&st-dnt&st-1pcttl=4320
+[19:43:16 INF] 209. [XHR] GET https://local.adguard.org/adguard-ajax-api/api?type=gm-xml-http-request&unique_name=Web%20of%20Trust&url=https%3A%2F%2Frating.adguard.com%2F0.4%2Fpublic_link_json2%3Fhosts%3Dapp.usercentrics.eu%2F%26key%3D04a3aa04ef92d65637d0633eb495e82ad648508e&data=&headers=&method=GET&overridemimetype=&user=&password=&sn=36bcef522663073ad9f675049f79d858663b1c20e30f764df55b42452835e014&ust=5f050b5d-f205-4771-9509-37b8d1c27a67
+[19:43:16 INF] 210. [SCRIPT] GET https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js
+[19:43:16 INF] 211. [DOCUMENT] GET https://www.joyn.de/
+[19:43:16 INF] 212. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/1252-0cf35bd83413b474.js
+[19:43:16 INF] 213. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/15.378665f90e44eb99.js
+[19:43:16 INF] 214. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/1766-f4a8d1eac8ed7fa9.js
+[19:43:16 INF] 215. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/1792-e0593a87c8e74feb.js
+[19:43:16 INF] 216. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/1861-d837599c1f9229dd.js
+[19:43:16 INF] 217. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/2479-3d368e4b9de30c62.js
+[19:43:16 INF] 218. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/2540-61c57e9c44982da4.js
+[19:43:16 INF] 219. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/2560-d5994c3b997682f7.js
+[19:43:16 INF] 220. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/2689-e0f2bf57cd9f0039.js
+[19:43:16 INF] 221. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/2973-b7b9c37c4e3e5b76.js
+[19:43:16 INF] 222. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3008-82404860eddce416.js
+[19:43:16 INF] 223. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3094.0a97d410d31726ec.js
+[19:43:16 INF] 224. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3161-1b2906e9ccb97c45.js
+[19:43:16 INF] 225. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3259-67342865bc5040de.js
+[19:43:16 INF] 226. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3314-5553f63273fb1bb4.js
+[19:43:16 INF] 227. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3397-3ebfa02a5aaf9fd8.js
+[19:43:16 INF] 228. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3801-93f538b18749b451.js
+[19:43:16 INF] 229. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/387-b8c71bf8951d8cda.js
+[19:43:16 INF] 230. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/3965-b5232abf57251fce.js
+[19:43:16 INF] 231. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/4433-df76703784f1fc24.js
+[19:43:16 INF] 232. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/451-b79c94ab70720c0e.js
+[19:43:16 INF] 233. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/48-c088bcd67ebc96be.js
+[19:43:16 INF] 234. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/4959-fc3488cb2922960b.js
+[19:43:16 INF] 235. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/4978-8af718e2b373cb28.js
+[19:43:16 INF] 236. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5013.76dbffc0c47c3165.js
+[19:43:16 INF] 237. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5042-c17e7839dedf8c55.js
+[19:43:16 INF] 238. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5227-b4c256fd06e5352c.js
+[19:43:16 INF] 239. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5270-8c6e40cb075394e0.js
+[19:43:16 INF] 240. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5470.4aab383696c18bd6.js
+[19:43:16 INF] 241. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5534-808a5fe5c572704e.js
+[19:43:16 INF] 242. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/5854.0437fee8932e4fd1.js
+[19:43:16 INF] 243. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/6057-bc4711162ac26f72.js
+[19:43:16 INF] 244. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/6101.6a4c7c2560208760.js
+[19:43:16 INF] 245. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/618-9140c073bc39083a.js
+[19:43:16 INF] 246. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/6240-946f25bdf1eb050c.js
+[19:43:16 INF] 247. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/626eebc1-a09bafc6657b0976.js
+[19:43:16 INF] 248. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/6496.96fffb8879013d3b.js
+[19:43:16 INF] 249. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/6880-6999df2c76876a74.js
+[19:43:16 INF] 250. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/7224-e669f1ec28b7c24a.js
+[19:43:16 INF] 251. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/7982-57035b2a48c9ffed.js
+[19:43:16 INF] 252. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/8458.71b3c51141402889.js
+[19:43:16 INF] 253. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/9299-c5e5051d31d8d46d.js
+[19:43:16 INF] 254. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/9403-d5e8fede10c53a1c.js
+[19:43:16 INF] 255. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/cms/%5B...pathname%5D/layout-f84826737f34ce82.js
+[19:43:16 INF] 256. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/cms/%5B...pathname%5D/page-f692471a65bde681.js
+[19:43:16 INF] 257. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/layout-b0ff8f165bb8f96a.js
+[19:43:16 INF] 258. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/not-found-0f4457ab277fa6cd.js
+[19:43:16 INF] 259. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/serien/%5Bseries%5D/layout-446a85c55a23fc7a.js
+[19:43:16 INF] 260. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/app/serien/%5Bseries%5D/page-01e4e9c3a6a01da1.js
+[19:43:16 INF] 261. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/main-app-53b6ffb31bdb1b72.js
+[19:43:16 INF] 262. [SCRIPT] GET https://www.joyn.de/_next/static/chunks/webpack-b323c524f7e30f53.js
+[19:43:16 INF] 263. [STYLESHEET] GET https://www.joyn.de/_next/static/css/0c187f54d657fb8d.css
+[19:43:16 INF] 264. [STYLESHEET] GET https://www.joyn.de/_next/static/css/1a40997bb35f4610.css
+[19:43:16 INF] 265. [STYLESHEET] GET https://www.joyn.de/_next/static/css/2a6aa2f1db07f685.css
+[19:43:16 INF] 266. [STYLESHEET] GET https://www.joyn.de/_next/static/css/2f7012733238a03a.css
+[19:43:16 INF] 267. [STYLESHEET] GET https://www.joyn.de/_next/static/css/3f4bcf2854686a57.css
+[19:43:16 INF] 268. [STYLESHEET] GET https://www.joyn.de/_next/static/css/7988acfa1c1e249f.css
+[19:43:16 INF] 269. [STYLESHEET] GET https://www.joyn.de/_next/static/css/80dff4bda7398da4.css
+[19:43:16 INF] 270. [STYLESHEET] GET https://www.joyn.de/_next/static/css/8f2b7845ed24001f.css
+[19:43:16 INF] 271. [STYLESHEET] GET https://www.joyn.de/_next/static/css/9325316aab8de8e0.css
+[19:43:16 INF] 272. [STYLESHEET] GET https://www.joyn.de/_next/static/css/96315884bd006643.css
+[19:43:16 INF] 273. [STYLESHEET] GET https://www.joyn.de/_next/static/css/9e1899cbcb931f63.css
+[19:43:16 INF] 274. [STYLESHEET] GET https://www.joyn.de/_next/static/css/b129c75069bf08aa.css
+[19:43:16 INF] 275. [STYLESHEET] GET https://www.joyn.de/_next/static/css/b3a03948e3711435.css
+[19:43:16 INF] 276. [STYLESHEET] GET https://www.joyn.de/_next/static/css/ba4d2dd996edb711.css
+[19:43:16 INF] 277. [STYLESHEET] GET https://www.joyn.de/_next/static/css/c007b58a345964a3.css
+[19:43:16 INF] 278. [STYLESHEET] GET https://www.joyn.de/_next/static/css/c8b89f6c3207234a.css
+[19:43:16 INF] 279. [STYLESHEET] GET https://www.joyn.de/_next/static/css/d8b6a70e5bb85fc0.css
+[19:43:16 INF] 280. [STYLESHEET] GET https://www.joyn.de/_next/static/css/dc832d394a2eba33.css
+[19:43:16 INF] 281. [STYLESHEET] GET https://www.joyn.de/_next/static/css/e60923975dc590f3.css
+[19:43:16 INF] 282. [STYLESHEET] GET https://www.joyn.de/_next/static/css/f75356f77eac9c2b.css
+[19:43:16 INF] 283. [FONT] GET https://www.joyn.de/_next/static/media/Campton-Bold.1521d0e5.woff
+[19:43:16 INF] 284. [FONT] GET https://www.joyn.de/_next/static/media/Campton-Book.8defe0ea.woff
+[19:43:16 INF] 285. [IMAGE] GET https://www.joyn.de/_next/static/media/ico-account.345e57f6.svg
+[19:43:16 INF] 286. [IMAGE] GET https://www.joyn.de/_next/static/media/ico-hamburger.5f4f2bc7.svg
+[19:43:16 INF] 287. [IMAGE] GET https://www.joyn.de/_next/static/media/ico-search.ac34d4c0.svg
+[19:43:16 INF] 288. [FETCH] GET https://www.joyn.de/collection/im-tv-verpasst%3F?id=997965:f9589d4800b07e0fe0af835439d251bb&_rsc=hylwc
+[19:43:16 INF] 289. [FETCH] GET https://www.joyn.de/collection/joyn-originals?id=997965:3eaacdd79365ace51504865be039f77e&_rsc=hylwc
+[19:43:16 INF] 290. [FETCH] GET https://www.joyn.de/collection/schon-vor-tv-ausstrahlung?id=997965:7c1bcc34b244a106b864ee99bd19a80c&_rsc=hylwc
+[19:43:16 INF] 291. [FETCH] GET https://www.joyn.de/collection/weihnachtszeit%2C-sch%C3%B6nste-zeit?id=997965:872a960428d55027c1c773f204673856&_rsc=hylwc
+[19:43:16 INF] 292. [FETCH] GET https://www.joyn.de/filme/dear-santa-eine-reise-zum-nordpol?_rsc=hylwc
+[19:43:16 INF] 293. [FETCH] GET https://www.joyn.de/play/live-tv?_rsc=hylwc
+[19:43:16 INF] 294. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=1&from=%2F&_rsc=hylwc
+[19:43:16 INF] 295. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=115&from=%2F&_rsc=hylwc
+[19:43:16 INF] 296. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=123&from=%2F&_rsc=hylwc
+[19:43:16 INF] 297. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=165&from=%2F&_rsc=hylwc
+[19:43:16 INF] 298. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=2&from=%2F&_rsc=hylwc
+[19:43:16 INF] 299. [FETCH] GET https://www.joyn.de/play/live-tv?channel_id=3&from=%2F&_rsc=hylwc
+[19:43:16 INF] 300. [FETCH] GET https://www.joyn.de/reality?_rsc=hylwc
+[19:43:16 INF] 301. [SCRIPT] GET https://www.joyn.de/scripts/cmp-slim.mjs
+[19:43:16 INF] 302. [FETCH] GET https://www.joyn.de/serien/chained?_rsc=hylwc
+[19:43:16 INF] 303. [FETCH] GET https://www.joyn.de/serien/dream-kitchen?_rsc=hylwc
+[19:43:16 INF] 304. [FETCH] GET https://www.joyn.de/serien/forsthaus-rampensau-germany?_rsc=hylwc
+[19:43:16 INF] 305. [FETCH] GET https://www.joyn.de/serien/lambro-diaries-gumball-3000-edition?_rsc=hylwc
+[19:43:16 INF] 306. [FETCH] GET https://www.joyn.de/serien/last-soul-the-documentary?_rsc=hylwc
+[19:43:16 INF] 307. [FETCH] GET https://www.joyn.de/serien/mission-restaurant?_rsc=hylwc
+[19:43:16 INF] 308. [FETCH] GET https://www.joyn.de/serien/survival-squad?_rsc=hylwc
+[19:43:16 INF] 309. [FETCH] GET https://www.joyn.de/serien/tierbruecke?_rsc=hylwc
+[19:43:16 INF] 310. [FETCH] GET https://www.joyn.de/serien/wir-sind-die-burnetts?_rsc=hylwc
+[19:43:16 INF] 311. [FETCH] GET https://www.joyn.de/sport?_rsc=hylwc
+[19:43:16 INF] Page inspection completed successfully

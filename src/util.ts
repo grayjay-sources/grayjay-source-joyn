@@ -5,7 +5,12 @@ export function applyCommonHeaders(): Record<string, string> {
 }
 
 export function log(message: string) {
-  console.log(`[Joyn] ${message}`);
+  const logMessage = `[Joyn] ${message}`;
+  console.log(logMessage);
+  // Use bridge.log if available to ensure logs are captured by OnLog event
+  if (typeof bridge !== 'undefined' && bridge.log) {
+    bridge.log(logMessage);
+  }
 }
 
 export function generateUUID(): string {

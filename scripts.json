@@ -1,0 +1,13 @@
+[19:54:45 INF] jayjay v3.1.0
+[19:54:45 INF] Starting page inspection...
+[19:54:45 INF] 
+Inspecting page: https://www.joyn.de
+[19:54:45 INF] Timeout: 30000ms
+[19:54:45 INF] Wait time: 3000ms
+[19:54:45 INF] Output format: json
+[19:54:45 INF] Headless: True
+[19:54:45 INF] Viewport: 1920x1080
+[19:54:45 INF] Wait until: networkidle
+[19:54:45 INF] Auto-scroll: True
+[19:54:45 INF] Filter types: script
+[19:54:45 INF] Initializing browser...

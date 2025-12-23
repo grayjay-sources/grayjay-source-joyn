@@ -12,6 +12,7 @@ export interface JoynAsset {
     artLogo?: string;
   };
   brand?: {
+    id?: string;
     name?: string;
     logo?: string;
   };
@@ -50,9 +51,9 @@ export const JoynAssetToGrayjayVideo = (
   // Create author link from brand
   const author = asset.brand 
     ? new PlatformAuthorLink(
-        new PlatformID(PLATFORM, asset.brand.name || '', pluginId, 3),
+        new PlatformID(PLATFORM, asset.brand.id || asset.brand.name || '', pluginId, 3),
         asset.brand.name || '',
-        `${BASE_URL}/mediatheken/${asset.brand.name}`,
+        asset.brand.id ? `${BASE_URL}/mediatheken/${asset.brand.id}` : `${BASE_URL}/mediatheken/${asset.brand.name}`,
         asset.brand.logo ? buildImageUrl(asset.brand.logo, 'nextgen-web-brand-150x') : '',
         0
       )
@@ -72,9 +73,11 @@ export const JoynAssetToGrayjayVideo = (
   const video: PlatformVideoDef = {
     id: new PlatformID(PLATFORM, videoId, pluginId, 3),
     name: title,
+    description: asset.description || '',
     thumbnails: new Thumbnails([new Thumbnail(thumbnail, 0)]),
     author,
     uploadDate,
+    datetime: uploadDate,
     duration,
     viewCount: 0,
     url,

@@ -232,4 +232,3 @@ npx serve -p 8080
 ---
 
 **Overall Status:** 🟡 **~70% Complete** - Core functionality works, video extraction pending
-

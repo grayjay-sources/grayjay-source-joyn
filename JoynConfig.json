@@ -4,21 +4,17 @@
   "author": "Bluscream, Cursor.AI",
   "authorUrl": "https://github.com/Bluscream",
   "platformUrl": "https://joyn.de",
-  "sourceUrl": "https://raw.githubusercontent.com/grayjay-sources/grayjay-source-joyn/main/build/JoynConfig.json",
+  "sourceUrl": "https://localhost:3000/build/JoynConfig.json",
   "repositoryUrl": "https://github.com/grayjay-sources/grayjay-source-joyn",
   "scriptUrl": "./JoynScript.js",
-  "version": 1,
+  "version": 2,
   "iconUrl": "./JoynIcon.png",
   "id": "joyn-streaming-platform",
   "scriptSignature": "",
   "scriptPublicKey": "",
   "packages": ["Http", "DOMParser"],
   "allowEval": false,
-  "allowUrls": [
-    "joyn.de",
-    "www.joyn.de",
-    "*.joyn.de"
-  ],
+  "allowUrls": ["joyn.de", ".joyn.de", ".algolia.net", "entitlement.p7s1.io", "api.vod-prd.s.joyn.de", "auth.joyn.de"],
   "supportedClaimTypes": [3],
   "enablePlaylists": true,
   "enableLiveContent": true,
@@ -29,8 +25,33 @@
       "joyn.de": []
     }
   },
-  "settings": [],
+  "settings": [
+    {
+      "variable": "joyn_country",
+      "name": "Country",
+      "description": "Select your country to get region-specific content",
+      "type": "Dropdown",
+      "default": "0",
+      "options": [
+        "DE",
+        "AT",
+        "CH"
+      ]
+    }
+  ],
   "changelog": {
     "1": ["Initial version: Basic plugin structure"]
+  },
+  "Testing": {
+    "GetContentDetails": {
+      "urls": [
+        "https://www.joyn.de/filme/dear-santa-eine-reise-zum-nordpol"
+      ]
+    },
+    "GetChannel": {
+      "urls": [
+        "https://www.joyn.de/play/live-tv?channel_id=1"
+      ]
+    }
   }
 }

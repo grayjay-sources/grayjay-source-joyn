@@ -5,7 +5,7 @@ export const LANDING_PAGE_QUERY = {
   operationName: 'LandingPageClient',
   persistedQuery: {
     version: 1,
-    sha256Hash: '82586002cd18fa09ea491e5be192c10ed0b392b77d8a47f6e11b065172cfc894'
+    sha256Hash: 'd126aa8da9aae9a7abdabe014e8641ce54c17fd0a39c37f8a7bbcab258821508'
   }
 };
 
@@ -134,5 +134,21 @@ export const PAGE_SERIES_EPISODE_PLAYER_QUERY = {
   persistedQuery: {
     version: 1,
     sha256Hash: '864e9acb09fed428ad277efef2351295e76518b6803e63d5831a4150b96f9051'
+  }
+};
+
+export const PAGE_MOVIE_PLAYER_QUERY = {
+  operationName: 'PageMoviePlayerClientSide',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: 'a06da53f05ced9524e1694940d6ceb23e97d85cdb081d3c2ac44ffae5b3190a6'
+  }
+};
+
+export const PAGE_MOVIE_DETAIL_QUERY = {
+  operationName: 'PageMovieDetailStatic',
+  persistedQuery: {
+    version: 1,
+    sha256Hash: '26bd3a883c1b619572ea914a11f40c3cddd01bc140d8d58cefbe5291b5916b51'
   }
 };

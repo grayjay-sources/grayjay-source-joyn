@@ -182,4 +182,3 @@ Entry includes:
 ## 📄 License
 
 MIT License - See `LICENSE` file
-
