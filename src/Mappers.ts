@@ -6,6 +6,12 @@ export interface JoynAsset {
   title?: string;
   description?: string;
   duration?: number;
+  // GraphQL returns images at top level with *Image suffix
+  heroLandscapeImage?: string;
+  heroPortraitImage?: string;
+  artLogoImage?: string;
+  primaryImage?: string;
+  // Also support nested images structure (for compatibility)
   images?: {
     heroLandscape?: string;
     heroPortrait?: string;
@@ -37,10 +43,18 @@ export const JoynAssetToGrayjayVideo = (
   const duration = asset.duration || 0;
   
   // Build thumbnail from heroLandscape or heroPortrait
-  const thumbnail = asset.images?.heroLandscape 
-    ? buildImageUrl(asset.images.heroLandscape, 'nextgen-web-livestill-503x283')
-    : asset.images?.heroPortrait
-    ? buildImageUrl(asset.images.heroPortrait, 'nextgen-web-heroportrait-243x365')
+  // GraphQL returns images at top level: heroLandscapeImage, heroPortraitImage
+  // Also support nested images structure for compatibility
+  const heroLandscape = asset.heroLandscapeImage || asset.images?.heroLandscape;
+  const heroPortrait = asset.heroPortraitImage || asset.images?.heroPortrait;
+  const primaryImage = asset.primaryImage;
+  
+  const thumbnail = heroLandscape 
+    ? buildImageUrl(heroLandscape, 'nextgen-web-herolandscape-1920x')
+    : heroPortrait
+    ? buildImageUrl(heroPortrait, 'nextgen-web-heroportrait-243x365')
+    : primaryImage
+    ? buildImageUrl(primaryImage, 'nextgen-web-herolandscape-1920x')
     : '';
   
   // Build video URL

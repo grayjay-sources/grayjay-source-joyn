@@ -7,7 +7,7 @@
   "sourceUrl": "https://localhost:3000/build/JoynConfig.json",
   "repositoryUrl": "https://github.com/grayjay-sources/grayjay-source-joyn",
   "scriptUrl": "./JoynScript.js",
-  "version": 2,
+  "version": 3,
   "iconUrl": "./JoynIcon.png",
   "id": "joyn-streaming-platform",
   "scriptSignature": "",
@@ -40,7 +40,9 @@
     }
   ],
   "changelog": {
-    "1": ["Initial version: Basic plugin structure"]
+    "1": ["Initial version: Basic plugin structure"],
+    "2": ["Added support for series playlists and improved error handling"],
+    "3": ["Fixed thumbnail URLs - now correctly handles GraphQL image fields (heroLandscapeImage, heroPortraitImage)"]
   },
   "Testing": {
     "GetContentDetails": {

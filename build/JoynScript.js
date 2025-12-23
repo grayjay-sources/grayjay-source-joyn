@@ -29,6 +29,46 @@ const DEFAULT_HEADERS = {
     'Pragma': 'no-cache'
 };
 
+function applyCommonHeaders() {
+    return { ...DEFAULT_HEADERS };
+}
+function log(message) {
+    const logMessage = `[Joyn] ${message}`;
+    console.log(logMessage);
+    // Use bridge.log if available to ensure logs are captured by OnLog event
+    if (typeof bridge !== 'undefined' && bridge.log) {
+        bridge.log(logMessage);
+    }
+}
+function getAssetIdFromUrl(url) {
+    // Extract last segment from URL (may contain the asset ID)
+    // Joyn URLs can be:
+    // - /serien/navy-cis-la (series slug)
+    // - /serien/navy-cis-la/14-1-game-of-drones-bpidjn4j8opy (episode with ID at end)
+    // - /filme/transformers-aufstieg-der-bestien (movie slug)
+    const parts = url.split('?')[0].split('/');
+    const lastSegment = parts[parts.length - 1];
+    // Check if last segment contains an asset ID (starts with b_, d_, c_)
+    const assetMatch = lastSegment.match(/([bdc]_[a-z0-9]+)$/i);
+    if (assetMatch) {
+        return assetMatch[1];
+    }
+    // Otherwise return the slug
+    return lastSegment || null;
+}
+function getSeriesSlugFromUrl(url) {
+    // Extract series slug from URLs like /serien/navy-cis-la or /serien/navy-cis-la/14-1-...
+    const match = url.match(/\/serien\/([^\/\?]+)/);
+    return match ? match[1] : null;
+}
+function buildImageUrl(path, profile) {
+    if (!path)
+        return '';
+    if (path.startsWith('http'))
+        return path;
+    return `https://img.joyn.de/${path}/profile:${profile}.webp`;
+}
+
 // Joyn uses persisted queries with SHA256 hashes
 // These are the query hashes observed from the network requests
 const LANDING_PAGE_QUERY = {
@@ -81,56 +121,23 @@ const PAGE_MOVIE_DETAIL_QUERY = {
     }
 };
 
-function applyCommonHeaders() {
-    return { ...DEFAULT_HEADERS };
-}
-function log(message) {
-    const logMessage = `[Joyn] ${message}`;
-    console.log(logMessage);
-    // Use bridge.log if available to ensure logs are captured by OnLog event
-    if (typeof bridge !== 'undefined' && bridge.log) {
-        bridge.log(logMessage);
-    }
-}
-function getAssetIdFromUrl(url) {
-    // Extract last segment from URL (may contain the asset ID)
-    // Joyn URLs can be:
-    // - /serien/navy-cis-la (series slug)
-    // - /serien/navy-cis-la/14-1-game-of-drones-bpidjn4j8opy (episode with ID at end)
-    // - /filme/transformers-aufstieg-der-bestien (movie slug)
-    const parts = url.split('?')[0].split('/');
-    const lastSegment = parts[parts.length - 1];
-    // Check if last segment contains an asset ID (starts with b_, d_, c_)
-    const assetMatch = lastSegment.match(/([bdc]_[a-z0-9]+)$/i);
-    if (assetMatch) {
-        return assetMatch[1];
-    }
-    // Otherwise return the slug
-    return lastSegment || null;
-}
-function getSeriesSlugFromUrl(url) {
-    // Extract series slug from URLs like /serien/navy-cis-la or /serien/navy-cis-la/14-1-...
-    const match = url.match(/\/serien\/([^\/\?]+)/);
-    return match ? match[1] : null;
-}
-function buildImageUrl(path, profile) {
-    if (!path)
-        return '';
-    if (path.startsWith('http'))
-        return path;
-    return `https://img.joyn.de/${path}/profile:${profile}.webp`;
-}
-
 const JoynAssetToGrayjayVideo = (pluginId, asset) => {
     const videoId = asset.id || '';
     const title = asset.title || 'Untitled';
     const duration = asset.duration || 0;
     // Build thumbnail from heroLandscape or heroPortrait
-    const thumbnail = asset.images?.heroLandscape
-        ? buildImageUrl(asset.images.heroLandscape, 'nextgen-web-livestill-503x283')
-        : asset.images?.heroPortrait
-            ? buildImageUrl(asset.images.heroPortrait, 'nextgen-web-heroportrait-243x365')
-            : '';
+    // GraphQL returns images at top level: heroLandscapeImage, heroPortraitImage
+    // Also support nested images structure for compatibility
+    const heroLandscape = asset.heroLandscapeImage || asset.images?.heroLandscape;
+    const heroPortrait = asset.heroPortraitImage || asset.images?.heroPortrait;
+    const primaryImage = asset.primaryImage;
+    const thumbnail = heroLandscape
+        ? buildImageUrl(heroLandscape, 'nextgen-web-herolandscape-1920x')
+        : heroPortrait
+            ? buildImageUrl(heroPortrait, 'nextgen-web-heroportrait-243x365')
+            : primaryImage
+                ? buildImageUrl(primaryImage, 'nextgen-web-herolandscape-1920x')
+                : '';
     // Build video URL
     const url = asset.path
         ? `${BASE_URL}${asset.path}`
@@ -303,10 +310,6 @@ source.getHome = function (continuationToken) {
                 if (block.assets && Array.isArray(block.assets)) {
                     for (const asset of block.assets) {
                         try {
-                            // Debug: Log asset image data
-                            if (!asset.images || (!asset.images.heroLandscape && !asset.images.heroPortrait)) {
-                                log('Asset missing images: ' + JSON.stringify(Object.keys(asset)).substring(0, 200));
-                            }
                             const video = JoynAssetToGrayjayVideo(config.id, asset);
                             videos.push(video);
                         }
@@ -388,6 +391,10 @@ source.search = function (query, type, order, filters, continuationToken) {
                 description: hit.description,
                 path: hit.fullPath || hit.path,
                 contentType: hit.contentType,
+                // Algolia returns images in nested structure, but GraphQL uses top-level *Image fields
+                heroPortraitImage: hit.images?.heroPortrait,
+                heroLandscapeImage: hit.images?.heroLandscape,
+                artLogoImage: hit.images?.artLogo,
                 images: {
                     heroPortrait: hit.images?.heroPortrait,
                     heroLandscape: hit.images?.heroLandscape,
@@ -1345,9 +1352,11 @@ function getEpisodeDetails(url, assetId) {
         id: new PlatformID(PLATFORM, asset.id || assetId, config.id, 3),
         name: asset.title || episode.title || 'Unknown Episode',
         thumbnails: new Thumbnails([
-            new Thumbnail(asset.images?.heroLandscape
-                ? `https://img.joyn.de/${asset.images.heroLandscape}/profile:nextgen-web-herolandscape-1920x.webp`
-                : '', 0)
+            new Thumbnail((asset.heroLandscapeImage || asset.images?.heroLandscape)
+                ? buildImageUrl(asset.heroLandscapeImage || asset.images?.heroLandscape || '', 'nextgen-web-herolandscape-1920x')
+                : (asset.heroPortraitImage || asset.images?.heroPortrait)
+                    ? buildImageUrl(asset.heroPortraitImage || asset.images?.heroPortrait || '', 'nextgen-web-heroportrait-243x365')
+                    : '', 0)
         ]),
         author: new PlatformAuthorLink(new PlatformID(PLATFORM, brand.id || '', config.id, 3), brand.name || '', brand.id ? `${BASE_URL}/mediatheken/${brand.id}` : '', brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '', 0),
         uploadDate: asset.publicationDate ? Math.floor(new Date(asset.publicationDate).getTime() / 1000) : 0,
@@ -1419,9 +1428,11 @@ function getMovieDetails(url, assetId) {
         id: new PlatformID(PLATFORM, asset.id || assetId, config.id, 3),
         name: asset.title || assetId,
         thumbnails: new Thumbnails([
-            new Thumbnail(asset.images?.heroLandscape
-                ? `https://img.joyn.de/${asset.images.heroLandscape}/profile:nextgen-web-herolandscape-1920x.webp`
-                : '', 0)
+            new Thumbnail((asset.heroLandscapeImage || asset.images?.heroLandscape)
+                ? buildImageUrl(asset.heroLandscapeImage || asset.images?.heroLandscape || '', 'nextgen-web-herolandscape-1920x')
+                : (asset.heroPortraitImage || asset.images?.heroPortrait)
+                    ? buildImageUrl(asset.heroPortraitImage || asset.images?.heroPortrait || '', 'nextgen-web-heroportrait-243x365')
+                    : '', 0)
         ]),
         author: new PlatformAuthorLink(new PlatformID(PLATFORM, brand.id || '', config.id, 3), brand.name || '', brand.id ? `${BASE_URL}/mediatheken/${brand.id}` : '', brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '', 0),
         uploadDate: asset.publicationDate ? Math.floor(new Date(asset.publicationDate).getTime() / 1000) : 0,
@@ -1470,10 +1481,10 @@ function getSeriesAsVideoDetails(url) {
         id: new PlatformID(PLATFORM, series.id || seriesSlug, config.id, 3),
         name: series.title || 'Unknown Series',
         thumbnails: new Thumbnails([
-            new Thumbnail(series.images?.heroPortrait
-                ? `https://img.joyn.de/${series.images.heroPortrait}/profile:nextgen-web-heroportrait-243x365.webp`
-                : series.images?.heroLandscape
-                    ? `https://img.joyn.de/${series.images.heroLandscape}/profile:nextgen-web-herolandscape-1920x.webp`
+            new Thumbnail((series.heroPortraitImage || series.images?.heroPortrait)
+                ? buildImageUrl(series.heroPortraitImage || series.images?.heroPortrait || '', 'nextgen-web-heroportrait-243x365')
+                : (series.heroLandscapeImage || series.images?.heroLandscape)
+                    ? buildImageUrl(series.heroLandscapeImage || series.images?.heroLandscape || '', 'nextgen-web-herolandscape-1920x')
                     : '', 0)
         ]),
         author: new PlatformAuthorLink(new PlatformID(PLATFORM, brand.id || '', config.id, 3), brand.name || '', brand.id ? `${BASE_URL}/mediatheken/${brand.id}` : '', brand.logo ? `https://img.joyn.de/${brand.logo}/profile:nextgen-web-brand-150x.webp` : '', 0),
@@ -1526,9 +1537,11 @@ function getSeriesPlaylist(url) {
     const series = asset.series || asset;
     const brand = series.brand || {};
     const videoCount = series.numberOfEpisodes || 0;
-    const thumbnail = series.images?.heroPortrait
-        ? `https://img.joyn.de/${series.images.heroPortrait}/profile:nextgen-web-heroportrait-243x365.webp`
-        : '';
+    const thumbnail = (series.heroPortraitImage || series.images?.heroPortrait)
+        ? buildImageUrl(series.heroPortraitImage || series.images?.heroPortrait || '', 'nextgen-web-heroportrait-243x365')
+        : (series.heroLandscapeImage || series.images?.heroLandscape)
+            ? buildImageUrl(series.heroLandscapeImage || series.images?.heroLandscape || '', 'nextgen-web-herolandscape-1920x')
+            : '';
     const playlistDetails = {
         id: new PlatformID(PLATFORM, series.id || seriesSlug, config.id, 3),
         name: series.title || 'Unknown Series',
